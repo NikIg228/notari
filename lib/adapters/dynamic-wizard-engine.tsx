@@ -147,8 +147,8 @@ export function DynamicWizardEngine({
       // Находим поле radio/select в текущем шаге
       const radioField = currentStep.fields.find((f) => f.type === "radio")
       if (radioField) {
-        const fieldValue = watch(radioField.name)
-        if (fieldValue) {
+        const fieldValue = watch(radioField.name) as string | number | undefined
+        if (fieldValue != null && (typeof fieldValue === "string" || typeof fieldValue === "number")) {
           const nextStepId = getNextStepId(currentOriginalStep, fieldValue)
           if (nextStepId) {
             const nextIndex = findStepIndexByOriginalId(nextStepId)
