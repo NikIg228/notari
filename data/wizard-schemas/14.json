@@ -1,0 +1,544 @@
+{
+  "documentId": "14",
+  "steps": [
+    {
+      "id": "trustor1",
+      "title": "Доверитель 1",
+      "fields": [
+        {
+          "name": "trustor1_fullName",
+          "type": "text",
+          "label": "ФИО",
+          "required": true
+        },
+        {
+          "name": "trustor1_iin",
+          "type": "iin",
+          "label": "ИИН",
+          "required": true
+        },
+        {
+          "name": "trustor1_birthDate",
+          "type": "date",
+          "label": "Дата рождения",
+          "required": true
+        },
+        {
+          "name": "trustor1_address",
+          "type": "text",
+          "label": "Адрес",
+          "required": true
+        },
+        {
+          "name": "trustor1_passportType",
+          "type": "select",
+          "label": "Тип документа",
+          "required": true,
+          "options": [
+            {
+              "label": "Паспорт",
+              "value": "passport"
+            },
+            {
+              "label": "Удостоверение личности",
+              "value": "id"
+            }
+          ]
+        },
+        {
+          "name": "trustor1_passportNumber",
+          "type": "text",
+          "label": "Серия и номер документа",
+          "required": true
+        },
+        {
+          "name": "trustor1_passportIssuedBy",
+          "type": "text",
+          "label": "Кем выдан",
+          "required": true
+        },
+        {
+          "name": "trustor1_passportIssuedDate",
+          "type": "date",
+          "label": "Дата выдачи",
+          "required": true
+        },
+        {
+          "name": "trustor1_phone",
+          "type": "phone",
+          "label": "Телефон",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "agent1",
+      "title": "Поверенный 1",
+      "fields": [
+        {
+          "name": "agent1_fullName",
+          "type": "text",
+          "label": "ФИО",
+          "required": true
+        },
+        {
+          "name": "agent1_iin",
+          "type": "iin",
+          "label": "ИИН (если есть)",
+          "required": false
+        },
+        {
+          "name": "agent1_birthDate",
+          "type": "date",
+          "label": "Дата рождения",
+          "required": true
+        },
+        {
+          "name": "agent1_address",
+          "type": "text",
+          "label": "Адрес",
+          "required": true
+        },
+        {
+          "name": "agent1_citizenship",
+          "type": "text",
+          "label": "Гражданство",
+          "required": false
+        },
+        {
+          "name": "agent1_passportType",
+          "type": "select",
+          "label": "Тип документа",
+          "required": true,
+          "options": [
+            {
+              "label": "Удостоверение личности",
+              "value": "id"
+            },
+            {
+              "label": "Паспорт",
+              "value": "passport"
+            }
+          ]
+        },
+        {
+          "name": "agent1_passportNumber",
+          "type": "text",
+          "label": "Серия/номер",
+          "required": true
+        },
+        {
+          "name": "agent1_passportIssuedBy",
+          "type": "text",
+          "label": "Кем выдан",
+          "required": true
+        },
+        {
+          "name": "agent1_passportIssuedDate",
+          "type": "date",
+          "label": "Дата выдачи",
+          "required": true
+        },
+        {
+          "name": "agent1_phone",
+          "type": "phone",
+          "label": "Телефон",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "children",
+      "title": "Дети",
+      "description": "Добавьте информацию о детях (от 1 до 10)",
+      "fields": [
+        {
+          "name": "children",
+          "type": "array",
+          "label": "Дети",
+          "required": true,
+          "min": 1,
+          "max": 10,
+          "fields": [
+            {
+              "name": "fullName",
+              "type": "text",
+              "label": "ФИО",
+              "required": true
+            },
+            {
+              "name": "iin",
+              "type": "iin",
+              "label": "ИИН",
+              "required": false
+            },
+            {
+              "name": "birthDate",
+              "type": "date",
+              "label": "Дата рождения",
+              "required": true
+            },
+            {
+              "name": "citizenship",
+              "type": "text",
+              "label": "Гражданство",
+              "required": false
+            },
+            {
+              "name": "documentType",
+              "type": "select",
+              "label": "Тип документа",
+              "required": true,
+              "options": [
+                {
+                  "label": "Свидетельство о рождении",
+                  "value": "birth_certificate"
+                },
+                {
+                  "label": "Паспорт",
+                  "value": "passport"
+                }
+              ]
+            },
+            {
+              "name": "documentNumber",
+              "type": "text",
+              "label": "Номер документа",
+              "required": true
+            },
+            {
+              "name": "documentIssuedDate",
+              "type": "date",
+              "label": "Дата выдачи",
+              "required": false
+            },
+            {
+              "name": "documentIssuedBy",
+              "type": "text",
+              "label": "Кем выдан",
+              "required": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "countries",
+      "title": "Выбор стран поездки",
+      "fields": [
+        {
+          "name": "countries",
+          "type": "checkbox",
+          "label": "Страны",
+          "required": true,
+          "options": [
+            {
+              "label": "Весь мир",
+              "value": "Весь мир"
+            },
+            {
+              "label": "Россия",
+              "value": "Россия"
+            },
+            {
+              "label": "Турция",
+              "value": "Турция"
+            },
+            {
+              "label": "ОАЭ",
+              "value": "ОАЭ"
+            },
+            {
+              "label": "Грузия",
+              "value": "Грузия"
+            },
+            {
+              "label": "Армения",
+              "value": "Армения"
+            },
+            {
+              "label": "Кыргызстан",
+              "value": "Кыргызстан"
+            },
+            {
+              "label": "Узбекистан",
+              "value": "Узбекистан"
+            },
+            {
+              "label": "Таджикистан",
+              "value": "Таджикистан"
+            },
+            {
+              "label": "Беларусь",
+              "value": "Беларусь"
+            },
+            {
+              "label": "Украина",
+              "value": "Украина"
+            },
+            {
+              "label": "Молдова",
+              "value": "Молдова"
+            },
+            {
+              "label": "Германия",
+              "value": "Германия"
+            },
+            {
+              "label": "Франция",
+              "value": "Франция"
+            },
+            {
+              "label": "Италия",
+              "value": "Италия"
+            },
+            {
+              "label": "Испания",
+              "value": "Испания"
+            },
+            {
+              "label": "Великобритания",
+              "value": "Великобритания"
+            },
+            {
+              "label": "Польша",
+              "value": "Польша"
+            },
+            {
+              "label": "Чехия",
+              "value": "Чехия"
+            },
+            {
+              "label": "Венгрия",
+              "value": "Венгрия"
+            },
+            {
+              "label": "Греция",
+              "value": "Греция"
+            },
+            {
+              "label": "Кипр",
+              "value": "Кипр"
+            },
+            {
+              "label": "Мальта",
+              "value": "Мальта"
+            },
+            {
+              "label": "США",
+              "value": "США"
+            },
+            {
+              "label": "Канада",
+              "value": "Канада"
+            },
+            {
+              "label": "Мексика",
+              "value": "Мексика"
+            },
+            {
+              "label": "Бразилия",
+              "value": "Бразилия"
+            },
+            {
+              "label": "Аргентина",
+              "value": "Аргентина"
+            },
+            {
+              "label": "Чили",
+              "value": "Чили"
+            },
+            {
+              "label": "Китай",
+              "value": "Китай"
+            },
+            {
+              "label": "Япония",
+              "value": "Япония"
+            },
+            {
+              "label": "Южная Корея",
+              "value": "Южная Корея"
+            },
+            {
+              "label": "Таиланд",
+              "value": "Таиланд"
+            },
+            {
+              "label": "Вьетнам",
+              "value": "Вьетнам"
+            },
+            {
+              "label": "Сингапур",
+              "value": "Сингапур"
+            },
+            {
+              "label": "Малайзия",
+              "value": "Малайзия"
+            },
+            {
+              "label": "Индия",
+              "value": "Индия"
+            },
+            {
+              "label": "Австралия",
+              "value": "Австралия"
+            },
+            {
+              "label": "Новая Зеландия",
+              "value": "Новая Зеландия"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "regions",
+      "title": "Маршрут внутри РК",
+      "fields": [
+        {
+          "name": "regions",
+          "type": "checkbox",
+          "label": "Регионы",
+          "required": true,
+          "options": [
+            {
+              "label": "Вся Республика Казахстан",
+              "value": "Вся Республика Казахстан"
+            },
+            {
+              "label": "г. Алматы",
+              "value": "г. Алматы"
+            },
+            {
+              "label": "г. Астана",
+              "value": "г. Астана"
+            },
+            {
+              "label": "г. Шымкент",
+              "value": "г. Шымкент"
+            },
+            {
+              "label": "Акмолинская область",
+              "value": "Акмолинская область"
+            },
+            {
+              "label": "Актюбинская область",
+              "value": "Актюбинская область"
+            },
+            {
+              "label": "Алматинская область",
+              "value": "Алматинская область"
+            },
+            {
+              "label": "Атырауская область",
+              "value": "Атырауская область"
+            },
+            {
+              "label": "Восточно-Казахстанская область",
+              "value": "Восточно-Казахстанская область"
+            },
+            {
+              "label": "Жамбылская область",
+              "value": "Жамбылская область"
+            },
+            {
+              "label": "Западно-Казахстанская область",
+              "value": "Западно-Казахстанская область"
+            },
+            {
+              "label": "Карагандинская область",
+              "value": "Карагандинская область"
+            },
+            {
+              "label": "Костанайская область",
+              "value": "Костанайская область"
+            },
+            {
+              "label": "Кызылординская область",
+              "value": "Кызылординская область"
+            },
+            {
+              "label": "Мангистауская область",
+              "value": "Мангистауская область"
+            },
+            {
+              "label": "Павлодарская область",
+              "value": "Павлодарская область"
+            },
+            {
+              "label": "Северо-Казахстанская область",
+              "value": "Северо-Казахстанская область"
+            },
+            {
+              "label": "Туркестанская область",
+              "value": "Туркестанская область"
+            },
+            {
+              "label": "г. Караганда",
+              "value": "г. Караганда"
+            },
+            {
+              "label": "г. Талдыкорган",
+              "value": "г. Талдыкорган"
+            },
+            {
+              "label": "г. Каскелен",
+              "value": "г. Каскелен"
+            },
+            {
+              "label": "г. Талгар",
+              "value": "г. Талгар"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "term",
+      "title": "Срок доверенности",
+      "fields": [
+        {
+          "name": "termType",
+          "type": "radio",
+          "label": "Тип срока",
+          "required": true,
+          "options": [
+            {
+              "label": "Дни",
+              "value": "days"
+            },
+            {
+              "label": "Месяцы",
+              "value": "months"
+            }
+          ]
+        },
+        {
+          "name": "termDays",
+          "type": "number",
+          "label": "Количество дней",
+          "required": false,
+          "min": 1,
+          "max": 31,
+          "conditional": {
+            "field": "termType",
+            "value": "days"
+          }
+        },
+        {
+          "name": "termMonths",
+          "type": "number",
+          "label": "Количество месяцев",
+          "required": false,
+          "min": 1,
+          "max": 36,
+          "conditional": {
+            "field": "termType",
+            "value": "months"
+          }
+        }
+      ]
+    }
+  ]
+}

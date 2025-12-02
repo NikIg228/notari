@@ -1,0 +1,447 @@
+{
+  "documentId": "18",
+  "steps": [
+    {
+      "id": "trustor1",
+      "title": "Доверитель 1",
+      "fields": [
+        {
+          "name": "trustor1_fullName",
+          "type": "text",
+          "label": "ФИО",
+          "required": true
+        },
+        {
+          "name": "trustor1_iin",
+          "type": "iin",
+          "label": "ИИН",
+          "required": true
+        },
+        {
+          "name": "trustor1_birthDate",
+          "type": "date",
+          "label": "Дата рождения",
+          "required": true
+        },
+        {
+          "name": "trustor1_address",
+          "type": "text",
+          "label": "Адрес",
+          "required": true
+        },
+        {
+          "name": "trustor1_passportType",
+          "type": "select",
+          "label": "Тип документа",
+          "required": true,
+          "options": [
+            {
+              "label": "Паспорт",
+              "value": "passport"
+            },
+            {
+              "label": "Удостоверение личности",
+              "value": "id"
+            }
+          ]
+        },
+        {
+          "name": "trustor1_passportNumber",
+          "type": "text",
+          "label": "Серия и номер документа",
+          "required": true
+        },
+        {
+          "name": "trustor1_passportIssuedBy",
+          "type": "text",
+          "label": "Кем выдан",
+          "required": true
+        },
+        {
+          "name": "trustor1_passportIssuedDate",
+          "type": "date",
+          "label": "Дата выдачи",
+          "required": true
+        },
+        {
+          "name": "trustor1_phone",
+          "type": "phone",
+          "label": "Телефон",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "agent1",
+      "title": "Поверенный 1",
+      "fields": [
+        {
+          "name": "agent1_fullName",
+          "type": "text",
+          "label": "ФИО",
+          "required": true
+        },
+        {
+          "name": "agent1_iin",
+          "type": "iin",
+          "label": "ИИН (если есть)",
+          "required": false
+        },
+        {
+          "name": "agent1_birthDate",
+          "type": "date",
+          "label": "Дата рождения",
+          "required": true
+        },
+        {
+          "name": "agent1_address",
+          "type": "text",
+          "label": "Адрес",
+          "required": true
+        },
+        {
+          "name": "agent1_citizenship",
+          "type": "text",
+          "label": "Гражданство",
+          "required": false
+        },
+        {
+          "name": "agent1_passportType",
+          "type": "select",
+          "label": "Тип документа",
+          "required": true,
+          "options": [
+            {
+              "label": "Удостоверение личности",
+              "value": "id"
+            },
+            {
+              "label": "Паспорт",
+              "value": "passport"
+            }
+          ]
+        },
+        {
+          "name": "agent1_passportNumber",
+          "type": "text",
+          "label": "Серия/номер",
+          "required": true
+        },
+        {
+          "name": "agent1_passportIssuedBy",
+          "type": "text",
+          "label": "Кем выдан",
+          "required": true
+        },
+        {
+          "name": "agent1_passportIssuedDate",
+          "type": "date",
+          "label": "Дата выдачи",
+          "required": true
+        },
+        {
+          "name": "agent1_phone",
+          "type": "phone",
+          "label": "Телефон",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "vehicle",
+      "title": "Данные транспортного средства",
+      "fields": [
+        {
+          "name": "vehicle_type",
+          "type": "select",
+          "label": "Тип ТС",
+          "required": true,
+          "options": [
+            {
+              "label": "Легковой",
+              "value": "passenger"
+            },
+            {
+              "label": "Грузовой",
+              "value": "truck"
+            },
+            {
+              "label": "Мотоцикл",
+              "value": "motorcycle"
+            },
+            {
+              "label": "Автобус",
+              "value": "bus"
+            }
+          ]
+        },
+        {
+          "name": "vehicle_brand",
+          "type": "text",
+          "label": "Марка",
+          "required": true
+        },
+        {
+          "name": "vehicle_model",
+          "type": "text",
+          "label": "Модель",
+          "required": true
+        },
+        {
+          "name": "vehicle_registrationNumber",
+          "type": "text",
+          "label": "Гос. номер",
+          "required": true
+        },
+        {
+          "name": "vehicle_vin",
+          "type": "text",
+          "label": "VIN / шасси / кузов",
+          "required": false
+        },
+        {
+          "name": "vehicle_year",
+          "type": "number",
+          "label": "Год выпуска",
+          "required": true,
+          "min": 1900,
+          "max": 2026
+        },
+        {
+          "name": "vehicle_registrationDocumentNumber",
+          "type": "text",
+          "label": "Серия/номер документа регистрации",
+          "required": false
+        },
+        {
+          "name": "vehicle_registrationDocumentIssuedBy",
+          "type": "text",
+          "label": "Кем выдан документ регистрации",
+          "required": false
+        },
+        {
+          "name": "vehicle_registrationDocumentIssuedDate",
+          "type": "date",
+          "label": "Дата выдачи документа регистрации",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "countries",
+      "title": "Выбор стран поездки",
+      "fields": [
+        {
+          "name": "countries",
+          "type": "checkbox",
+          "label": "Страны",
+          "required": true,
+          "options": [
+            {
+              "label": "Весь мир",
+              "value": "Весь мир"
+            },
+            {
+              "label": "Россия",
+              "value": "Россия"
+            },
+            {
+              "label": "Турция",
+              "value": "Турция"
+            },
+            {
+              "label": "ОАЭ",
+              "value": "ОАЭ"
+            },
+            {
+              "label": "Грузия",
+              "value": "Грузия"
+            },
+            {
+              "label": "Армения",
+              "value": "Армения"
+            },
+            {
+              "label": "Кыргызстан",
+              "value": "Кыргызстан"
+            },
+            {
+              "label": "Узбекистан",
+              "value": "Узбекистан"
+            },
+            {
+              "label": "Таджикистан",
+              "value": "Таджикистан"
+            },
+            {
+              "label": "Беларусь",
+              "value": "Беларусь"
+            },
+            {
+              "label": "Украина",
+              "value": "Украина"
+            },
+            {
+              "label": "Молдова",
+              "value": "Молдова"
+            },
+            {
+              "label": "Германия",
+              "value": "Германия"
+            },
+            {
+              "label": "Франция",
+              "value": "Франция"
+            },
+            {
+              "label": "Италия",
+              "value": "Италия"
+            },
+            {
+              "label": "Испания",
+              "value": "Испания"
+            },
+            {
+              "label": "Великобритания",
+              "value": "Великобритания"
+            },
+            {
+              "label": "Польша",
+              "value": "Польша"
+            },
+            {
+              "label": "Чехия",
+              "value": "Чехия"
+            },
+            {
+              "label": "Венгрия",
+              "value": "Венгрия"
+            },
+            {
+              "label": "Греция",
+              "value": "Греция"
+            },
+            {
+              "label": "Кипр",
+              "value": "Кипр"
+            },
+            {
+              "label": "Мальта",
+              "value": "Мальта"
+            },
+            {
+              "label": "США",
+              "value": "США"
+            },
+            {
+              "label": "Канада",
+              "value": "Канада"
+            },
+            {
+              "label": "Мексика",
+              "value": "Мексика"
+            },
+            {
+              "label": "Бразилия",
+              "value": "Бразилия"
+            },
+            {
+              "label": "Аргентина",
+              "value": "Аргентина"
+            },
+            {
+              "label": "Чили",
+              "value": "Чили"
+            },
+            {
+              "label": "Китай",
+              "value": "Китай"
+            },
+            {
+              "label": "Япония",
+              "value": "Япония"
+            },
+            {
+              "label": "Южная Корея",
+              "value": "Южная Корея"
+            },
+            {
+              "label": "Таиланд",
+              "value": "Таиланд"
+            },
+            {
+              "label": "Вьетнам",
+              "value": "Вьетнам"
+            },
+            {
+              "label": "Сингапур",
+              "value": "Сингапур"
+            },
+            {
+              "label": "Малайзия",
+              "value": "Малайзия"
+            },
+            {
+              "label": "Индия",
+              "value": "Индия"
+            },
+            {
+              "label": "Австралия",
+              "value": "Австралия"
+            },
+            {
+              "label": "Новая Зеландия",
+              "value": "Новая Зеландия"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "term",
+      "title": "Срок доверенности",
+      "fields": [
+        {
+          "name": "termType",
+          "type": "radio",
+          "label": "Тип срока",
+          "required": true,
+          "options": [
+            {
+              "label": "Дни",
+              "value": "days"
+            },
+            {
+              "label": "Месяцы",
+              "value": "months"
+            }
+          ]
+        },
+        {
+          "name": "termDays",
+          "type": "number",
+          "label": "Количество дней",
+          "required": false,
+          "min": 1,
+          "max": 31,
+          "conditional": {
+            "field": "termType",
+            "value": "days"
+          }
+        },
+        {
+          "name": "termMonths",
+          "type": "number",
+          "label": "Количество месяцев",
+          "required": false,
+          "min": 1,
+          "max": 36,
+          "conditional": {
+            "field": "termType",
+            "value": "months"
+          }
+        }
+      ]
+    }
+  ]
+}

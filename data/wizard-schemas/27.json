@@ -1,0 +1,151 @@
+{
+  "documentId": "27",
+  "steps": [
+    {
+      "id": "trustor1",
+      "title": "Доверитель 1",
+      "fields": [
+        {
+          "name": "trustor1_fullName",
+          "type": "text",
+          "label": "ФИО",
+          "required": true
+        },
+        {
+          "name": "trustor1_iin",
+          "type": "iin",
+          "label": "ИИН",
+          "required": true
+        },
+        {
+          "name": "trustor1_birthDate",
+          "type": "date",
+          "label": "Дата рождения",
+          "required": true
+        },
+        {
+          "name": "trustor1_address",
+          "type": "text",
+          "label": "Адрес",
+          "required": true
+        },
+        {
+          "name": "trustor1_passportType",
+          "type": "select",
+          "label": "Тип документа",
+          "required": true,
+          "options": [
+            {
+              "label": "Паспорт",
+              "value": "passport"
+            },
+            {
+              "label": "Удостоверение личности",
+              "value": "id"
+            }
+          ]
+        },
+        {
+          "name": "trustor1_passportNumber",
+          "type": "text",
+          "label": "Серия и номер документа",
+          "required": true
+        },
+        {
+          "name": "trustor1_passportIssuedBy",
+          "type": "text",
+          "label": "Кем выдан",
+          "required": true
+        },
+        {
+          "name": "trustor1_passportIssuedDate",
+          "type": "date",
+          "label": "Дата выдачи",
+          "required": true
+        },
+        {
+          "name": "trustor1_phone",
+          "type": "phone",
+          "label": "Телефон",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "agent1",
+      "title": "Поверенный 1",
+      "fields": [
+        {
+          "name": "agent1_fullName",
+          "type": "text",
+          "label": "ФИО",
+          "required": true
+        },
+        {
+          "name": "agent1_iin",
+          "type": "iin",
+          "label": "ИИН (если есть)",
+          "required": false
+        },
+        {
+          "name": "agent1_birthDate",
+          "type": "date",
+          "label": "Дата рождения",
+          "required": true
+        },
+        {
+          "name": "agent1_address",
+          "type": "text",
+          "label": "Адрес",
+          "required": true
+        },
+        {
+          "name": "agent1_citizenship",
+          "type": "text",
+          "label": "Гражданство",
+          "required": false
+        },
+        {
+          "name": "agent1_passportType",
+          "type": "select",
+          "label": "Тип документа",
+          "required": true,
+          "options": [
+            {
+              "label": "Удостоверение личности",
+              "value": "id"
+            },
+            {
+              "label": "Паспорт",
+              "value": "passport"
+            }
+          ]
+        },
+        {
+          "name": "agent1_passportNumber",
+          "type": "text",
+          "label": "Серия/номер",
+          "required": true
+        },
+        {
+          "name": "agent1_passportIssuedBy",
+          "type": "text",
+          "label": "Кем выдан",
+          "required": true
+        },
+        {
+          "name": "agent1_passportIssuedDate",
+          "type": "date",
+          "label": "Дата выдачи",
+          "required": true
+        },
+        {
+          "name": "agent1_phone",
+          "type": "phone",
+          "label": "Телефон",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
