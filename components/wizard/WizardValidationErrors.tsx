@@ -4,6 +4,7 @@ import { useFormContext } from "react-hook-form"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle } from "lucide-react"
 import { WizardStep } from "@/lib/types/wizard.types"
+import { formatErrorForUser } from "@/lib/utils/error-messages"
 
 interface WizardValidationErrorsProps {
   step: WizardStep
@@ -31,13 +32,17 @@ export function WizardValidationErrors({ step }: WizardValidationErrorsProps) {
       if (error) {
         return {
           fieldName: field.name,
-          fieldLabel: field.label,
+          fieldLabel: field.label, // Это всегда строка
           error: error,
         }
       }
       return null
     })
-    .filter((e) => e !== null)
+    .filter((e) => e !== null) as Array<{
+      fieldName: string
+      fieldLabel: string
+      error: unknown
+    }>
 
   if (stepErrors.length === 0) {
     return null
@@ -50,11 +55,10 @@ export function WizardValidationErrors({ step }: WizardValidationErrorsProps) {
       <AlertDescription>
         <ul className="list-disc list-inside mt-2 space-y-1">
           {stepErrors.map((error) => {
-            const errorMessage = error?.error?.message || 
-              (typeof error?.error === "string" ? error.error : "Поле обязательно для заполнения")
+            const errorMessage = formatErrorForUser(error.error, error.fieldLabel)
             return (
-              <li key={error?.fieldName}>
-                <strong>{error?.fieldLabel}:</strong> {errorMessage}
+              <li key={error.fieldName}>
+                <strong>{error.fieldLabel}:</strong> {errorMessage}
               </li>
             )
           })}
