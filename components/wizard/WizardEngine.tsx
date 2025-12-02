@@ -61,7 +61,7 @@ export function WizardEngine({
   
   // Проверка видимости текущего шага
   const isStepVisible = !currentStep.conditional || (() => {
-    const conditionalValue = watch(currentStep.conditional.field)
+    const conditionalValue = watch(currentStep.conditional.field) as string
     const expectedValues = Array.isArray(currentStep.conditional.value)
       ? currentStep.conditional.value
       : [currentStep.conditional.value]
@@ -89,7 +89,7 @@ export function WizardEngine({
     const visibleFields = currentStep.fields.filter((f) => {
       // Пропускаем условные поля, если условие не выполнено
       if (f.conditional) {
-        const conditionalValue = watch(f.conditional.field)
+        const conditionalValue = watch(f.conditional.field) as string
         const expectedValues = Array.isArray(f.conditional.value)
           ? f.conditional.value
           : [f.conditional.value]
@@ -228,16 +228,16 @@ export function WizardEngine({
         // Проверяем видимость поля
         let isVisible = true
         if (field.conditional) {
-          const conditionalValue = watch(field.conditional.field)
+          const conditionalValue = watch(field.conditional.field) as string
           const expectedValues = Array.isArray(field.conditional.value)
             ? field.conditional.value
             : [field.conditional.value]
           isVisible = expectedValues.includes(conditionalValue)
         }
-        
+
         // Проверяем видимость шага
         if (step.conditional) {
-          const stepConditionalValue = watch(step.conditional.field)
+          const stepConditionalValue = watch(step.conditional.field) as string
           const stepExpectedValues = Array.isArray(step.conditional.value)
             ? step.conditional.value
             : [step.conditional.value]

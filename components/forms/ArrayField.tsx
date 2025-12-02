@@ -130,7 +130,9 @@ export function ArrayField({
                     register={register}
                     watch={watch}
                     setValue={setValue}
-                    error={fieldErrors?.[index]?.[subField.name]}
+                    error={fieldErrors?.[index] && typeof fieldErrors[index] === 'object' && 'fields' in fieldErrors[index] 
+                      ? (fieldErrors[index] as any).fields?.[subField.name]
+                      : undefined}
                   />
                 ))}
               </CardContent>

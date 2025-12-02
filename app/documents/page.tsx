@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query"
 import { Document } from "@/schemas/document.schema"
 import { DocumentFilters } from "@/components/DocumentFilters"
 import { useState } from "react"
-import { CATEGORIES } from "@/lib/constants/categories"
+import { Category } from "@/lib/constants/categories"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -28,7 +28,7 @@ async function fetchDocuments(): Promise<{ documents: Document[] }> {
 
 export default function DocumentsPage() {
   const [searchQuery, setSearchQuery] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState<string>("Все")
+  const [selectedCategory, setSelectedCategory] = useState<Category | "Все">("Все")
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["documents"],
