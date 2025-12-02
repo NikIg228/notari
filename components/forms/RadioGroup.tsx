@@ -2,18 +2,19 @@
 
 import { RadioGroup as UIRadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
-import { UseFormRegister, FieldError, UseFormSetValue } from "react-hook-form"
+import { UseFormRegister, UseFormSetValue } from "react-hook-form"
 import { FieldOption } from "@/lib/types/wizard.types"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle } from "lucide-react"
 import { formatErrorForUser } from "@/lib/utils/error-messages"
+import { RHFError } from "@/lib/types/form.types"
 
 interface RadioGroupProps {
   label: string
   name: string
   register: UseFormRegister<any>
   setValue: UseFormSetValue<any>
-  error?: FieldError
+  error?: RHFError
   required?: boolean
   options: FieldOption[]
 }

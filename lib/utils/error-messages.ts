@@ -1,12 +1,17 @@
-import { FieldError } from "react-hook-form"
+import { RHFError } from "@/lib/types/form.types"
 
 /**
  * Преобразует ошибку валидации в понятное сообщение на русском языке
  */
-export function getErrorMessage(error: FieldError | undefined): string | undefined {
+export function getErrorMessage(error: RHFError): string | undefined {
   if (!error) return undefined
 
-  const { message, type } = error
+  // Проверяем, является ли ошибка объектом с полями message и type
+  if (typeof error !== "object" || !("message" in error) || !("type" in error)) {
+    return undefined
+  }
+
+  const { message, type, ref } = error as { message?: unknown; type?: string; ref?: unknown }
 
   // Если уже есть понятное сообщение на русском
   if (typeof message === "string" && message.length > 0) {
@@ -23,23 +28,26 @@ export function getErrorMessage(error: FieldError | undefined): string | undefin
       return "Неверный тип данных"
     
     case "too_small":
-      if (error.ref?.min !== undefined) {
-        return `Минимальное значение: ${error.ref.min}`
+      if (ref && typeof ref === "object" && "min" in ref) {
+        return `Минимальное значение: ${(ref as { min: number }).min}`
       }
       return "Значение слишком мало"
     
     case "too_big":
-      if (error.ref?.max !== undefined) {
-        return `Максимальное значение: ${error.ref.max}`
+      if (ref && typeof ref === "object" && "max" in ref) {
+        return `Максимальное значение: ${(ref as { max: number }).max}`
       }
       return "Значение слишком велико"
     
     case "invalid_string":
-      if (error.ref?.validation === "email") {
-        return "Введите корректный email адрес"
-      }
-      if (error.ref?.validation === "url") {
-        return "Введите корректный URL адрес"
+      if (ref && typeof ref === "object" && "validation" in ref) {
+        const validation = (ref as { validation?: string }).validation
+        if (validation === "email") {
+          return "Введите корректный email адрес"
+        }
+        if (validation === "url") {
+          return "Введите корректный URL адрес"
+        }
       }
       return "Неверный формат данных"
     
@@ -50,14 +58,14 @@ export function getErrorMessage(error: FieldError | undefined): string | undefin
       return "Введите корректную дату"
     
     default:
-      return message as string || "Произошла ошибка при заполнении поля"
+      return (typeof message === "string" ? message : undefined) || "Произошла ошибка при заполнении поля"
   }
 }
 
 /**
  * Форматирует сообщение об ошибке для отображения пользователю
  */
-export function formatErrorForUser(error: FieldError | undefined, fieldLabel?: string): string {
+export function formatErrorForUser(error: RHFError, fieldLabel?: string): string {
   const message = getErrorMessage(error)
   
   if (!message) return ""

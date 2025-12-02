@@ -1,7 +1,8 @@
 "use client"
 
-import { UseFormRegister, UseFormWatch, UseFormSetValue, FieldError } from "react-hook-form"
+import { UseFormRegister, UseFormWatch, UseFormSetValue, useFormContext } from "react-hook-form"
 import { Field } from "@/lib/types/wizard.types"
+import { RHFError } from "@/lib/types/form.types"
 import { TextField } from "./TextField"
 import { NumberField } from "./NumberField"
 import { DateField } from "./DateField"
@@ -20,7 +21,7 @@ interface FieldRendererProps {
   register: UseFormRegister<any>
   watch: UseFormWatch<any>
   setValue: UseFormSetValue<any>
-  error?: FieldError
+  error?: RHFError
 }
 
 export function FieldRenderer({
@@ -31,6 +32,8 @@ export function FieldRenderer({
   setValue,
   error,
 }: FieldRendererProps) {
+  const { control } = useFormContext()
+  
   // Проверка условного отображения
   if (field.conditional) {
     const conditionalValue = watch(field.conditional.field)
@@ -90,6 +93,7 @@ export function FieldRenderer({
           name={name}
           register={register}
           setValue={setValue}
+          control={control}
           error={error}
           required={field.required}
           placeholder={field.placeholder}

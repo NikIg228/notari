@@ -2,11 +2,12 @@
 
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
-import { UseFormRegister, FieldError, UseFormWatch, UseFormSetValue } from "react-hook-form"
+import { UseFormRegister, UseFormWatch, UseFormSetValue } from "react-hook-form"
 import { FieldOption } from "@/lib/types/wizard.types"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle } from "lucide-react"
 import { formatErrorForUser } from "@/lib/utils/error-messages"
+import { RHFError } from "@/lib/types/form.types"
 
 interface CheckboxGroupProps {
   label: string
@@ -14,7 +15,7 @@ interface CheckboxGroupProps {
   register: UseFormRegister<any>
   watch: UseFormWatch<any>
   setValue: UseFormSetValue<any>
-  error?: FieldError
+  error?: RHFError
   required?: boolean
   options: FieldOption[]
   selectAll?: boolean

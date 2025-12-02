@@ -2,16 +2,17 @@
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { UseFormRegister, FieldError } from "react-hook-form"
+import { UseFormRegister } from "react-hook-form"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle } from "lucide-react"
 import { formatErrorForUser } from "@/lib/utils/error-messages"
+import { RHFError } from "@/lib/types/form.types"
 
 interface DateFieldProps {
   label: string
   name: string
   register: UseFormRegister<any>
-  error?: FieldError
+  error?: RHFError
   required?: boolean
   placeholder?: string
 }

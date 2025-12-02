@@ -2,17 +2,18 @@
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { UseFormRegister, FieldError, UseFormSetValue } from "react-hook-form"
+import { UseFormRegister, UseFormSetValue } from "react-hook-form"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle } from "lucide-react"
 import { formatErrorForUser } from "@/lib/utils/error-messages"
+import { RHFError } from "@/lib/types/form.types"
 
 interface NumberFieldProps {
   label: string
   name: string
   register: UseFormRegister<any>
   setValue: UseFormSetValue<any>
-  error?: FieldError
+  error?: RHFError
   required?: boolean
   placeholder?: string
   min?: number

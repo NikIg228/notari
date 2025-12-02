@@ -4,6 +4,7 @@ import { useFormContext } from "react-hook-form"
 import { WizardStep as WizardStepType } from "@/lib/types/wizard.types"
 import { FieldRenderer } from "@/components/forms/FieldRenderer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { RHFError } from "@/lib/types/form.types"
 
 interface WizardStepProps {
   step: WizardStepType
@@ -22,6 +23,7 @@ export function WizardStep({ step }: WizardStepProps) {
       </CardHeader>
       <CardContent className="space-y-6">
         {step.fields.map((field) => {
+          const fieldError: RHFError = errors[field.name]
           return (
             <FieldRenderer
               key={field.name}
@@ -30,7 +32,7 @@ export function WizardStep({ step }: WizardStepProps) {
               register={register}
               watch={watch}
               setValue={setValue}
-              error={errors[field.name]}
+              error={fieldError}
             />
           )
         })}

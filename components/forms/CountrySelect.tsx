@@ -1,15 +1,16 @@
 "use client"
 
 import { CheckboxGroup } from "./CheckboxGroup"
-import { UseFormRegister, UseFormWatch, UseFormSetValue, FieldError } from "react-hook-form"
+import { UseFormRegister, UseFormWatch, UseFormSetValue } from "react-hook-form"
 import { COUNTRIES } from "@/lib/constants/countries"
+import { RHFError } from "@/lib/types/form.types"
 
 interface CountrySelectProps {
   name: string
   register: UseFormRegister<any>
   watch: UseFormWatch<any>
   setValue: UseFormSetValue<any>
-  error?: FieldError
+  error?: RHFError
   required?: boolean
 }
 
