@@ -5,6 +5,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle } from "lucide-react"
 import { WizardStep } from "@/lib/types/wizard.types"
 import { formatErrorForUser } from "@/lib/utils/error-messages"
+import { RHFError } from "@/lib/types/form.types"
 
 interface WizardValidationErrorsProps {
   step: WizardStep
@@ -28,7 +29,7 @@ export function WizardValidationErrors({ step }: WizardValidationErrorsProps) {
   // Собираем все ошибки для видимых полей
   const stepErrors = visibleFields
     .map((field) => {
-      const error = errors[field.name]
+      const error = errors[field.name] as RHFError | undefined
       if (error) {
         return {
           fieldName: field.name,
@@ -41,7 +42,7 @@ export function WizardValidationErrors({ step }: WizardValidationErrorsProps) {
     .filter((e) => e !== null) as Array<{
       fieldName: string
       fieldLabel: string
-      error: unknown
+      error: RHFError
     }>
 
   if (stepErrors.length === 0) {
