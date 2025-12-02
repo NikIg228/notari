@@ -4,26 +4,27 @@
 
 @layer base {
   :root {
+    /* ChatGPT стиль - белый фон, серые разделы */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 13%; /* #202123 - чёрный для заголовков */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 13%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 262 83% 58%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 0 0% 13%;
+    --primary: 0 0% 13%; /* Чёрный для кнопок */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 97%; /* #f7f7f8 - серый раздел */
+    --secondary-foreground: 0 0% 13%;
+    --muted: 0 0% 97%; /* #f7f7f8 */
+    --muted-foreground: 0 0% 44%; /* #71767a - серый текст */
+    --accent: 0 0% 97%; /* #f7f7f8 */
+    --accent-foreground: 0 0% 13%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 262 83% 58%;
-    --radius: 0.5rem;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%; /* #e5e5e6 - тонкие границы */
+    --input: 0 0% 90%;
+    --ring: 0 0% 13%;
+    --radius: 0.5rem; /* rounded-lg */
   }
 }
 
@@ -33,6 +34,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 

@@ -6,13 +6,13 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { AlertCircle } from "lucide-react"
 
-interface LoginFormProps {
+interface AdminLoginFormProps {
   onSuccess: () => void
 }
 
-const PASSWORD = "123123"
+const ADMIN_PASSWORD = "101202"
 
-export function LoginForm({ onSuccess }: LoginFormProps) {
+export function AdminLoginForm({ onSuccess }: AdminLoginFormProps) {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -25,10 +25,10 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
     // Имитация задержки для UX
     await new Promise((resolve) => setTimeout(resolve, 300))
 
-    if (password === PASSWORD) {
+    if (password === ADMIN_PASSWORD) {
       // Сохраняем состояние авторизации
-      localStorage.setItem("isAuthenticated", "true")
-      localStorage.setItem("authTimestamp", Date.now().toString())
+      localStorage.setItem("isAdminAuthenticated", "true")
+      localStorage.setItem("adminAuthTimestamp", Date.now().toString())
       onSuccess()
     } else {
       setError("Неверный пароль. Попробуйте снова.")
@@ -42,18 +42,18 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
     <div className="min-h-screen flex items-center justify-center bg-white p-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-semibold text-foreground mb-2">Нотари</h1>
+          <h1 className="text-2xl font-semibold text-foreground mb-2">Админ-панель</h1>
           <p className="text-sm text-muted-foreground">
-            Введите пароль для доступа к системе
+            Введите пароль для доступа к административной панели
           </p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="password" className="text-sm font-medium text-foreground">
-              Пароль
+            <Label htmlFor="admin-password" className="text-sm font-medium text-foreground">
+              Пароль администратора
             </Label>
             <Input
-              id="password"
+              id="admin-password"
               type="password"
               value={password}
               onChange={(e) => {

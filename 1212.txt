@@ -1,0 +1,2165 @@
+{
+  "id": 1,
+  "code": "DOC_001",
+  "title": "Сопровождение ребёнка вне РК",
+  "category": "Дети",
+  "parsed": {
+    "steps": [
+      {
+        "id": "trustor_count",
+        "type": "radio",
+        "label": "Количество доверителей",
+        "options": [
+          { "value": 1, "label": "1 родитель" },
+          { "value": 2, "label": "2 родителя" }
+        ],
+        "next": {
+          "1": "trustor.0",
+          "2": "trustor.multiple"
+        }
+      },
+
+      {
+        "id": "trustor.0",
+        "type": "form",
+        "title": "Доверитель 1",
+        "fields": [
+          { "name": "trustor[0].full_name", "type": "text", "label": "ФИО" },
+          { "name": "trustor[0].iin", "type": "text", "label": "ИИН" },
+          { "name": "trustor[0].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "trustor[0].address", "type": "text", "label": "Адрес" },
+          { "name": "trustor[0].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "trustor[0].document.number", "type": "text", "label": "№ документа" },
+          { "name": "trustor[0].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "trustor[0].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "trustor[0].phone", "type": "text", "label": "Телефон (опц.)" }
+        ],
+        "next": "agent_count"
+      },
+
+      {
+        "id": "trustor.multiple",
+        "type": "array",
+        "min": 2,
+        "max": 2,
+        "item_label": "Доверитель",
+        "fields": [
+          { "name": "trustor[].full_name", "label": "ФИО", "type": "text" },
+          { "name": "trustor[].iin", "label": "ИИН", "type": "text" },
+          { "name": "trustor[].birth_date", "label": "Дата рождения", "type": "date" },
+          { "name": "trustor[].address", "label": "Адрес", "type": "text" },
+          { "name": "trustor[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "trustor[].document.number", "type": "text", "label": "Номер документа" },
+          { "name": "trustor[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "trustor[].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "trustor[].phone", "type": "text", "label": "Телефон (опц.)" }
+        ],
+        "next": "agent_count"
+      },
+
+      {
+        "id": "agent_count",
+        "type": "radio",
+        "label": "Количество поверенных",
+        "options": [
+          { "value": 1, "label": "1 поверенный" },
+          { "value": 2, "label": "2 поверенных" }
+        ],
+        "next": {
+          "1": "agent.0",
+          "2": "agent.multiple"
+        }
+      },
+
+      {
+        "id": "agent.0",
+        "type": "form",
+        "title": "Поверенный 1",
+        "fields": [
+          { "name": "agent[0].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[0].iin", "type": "text", "label": "ИИН (если есть)" },
+          { "name": "agent[0].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "agent[0].citizenship", "type": "text", "label": "Гражданство" },
+          { "name": "agent[0].address", "type": "text", "label": "Адрес/контакты" },
+          { "name": "agent[0].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[0].document.number", "type": "text", "label": "№ документа" },
+          { "name": "agent[0].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[0].document.issued_date", "type": "date", "label": "Дата выдачи" }
+        ],
+        "next": "children"
+      },
+
+      {
+        "id": "agent.multiple",
+        "type": "array",
+        "min": 2,
+        "max": 2,
+        "item_label": "Поверенный",
+        "fields": [
+          { "name": "agent[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "agent[].citizenship", "type": "text", "label": "Гражданство" },
+          { "name": "agent[].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[].document.number", "type": "text", "label": "№ документа" },
+          { "name": "agent[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[].document.issued_date", "type": "date", "label": "Дата выдачи" }
+        ],
+        "next": "children"
+      },
+
+      {
+        "id": "children",
+        "type": "array",
+        "title": "Несовершеннолетние дети",
+        "min": 1,
+        "max": 10,
+        "fields": [
+          { "name": "children[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "children[].iin", "type": "text", "label": "ИИН" },
+          { "name": "children[].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "children[].citizenship", "type": "text", "label": "Гражданство" },
+          { "name": "children[].document.type", "type": "text", "label": "Тип документа ребёнка" },
+          { "name": "children[].document.number", "type": "text", "label": "Номер документа" },
+          { "name": "children[].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "children[].document.issued_by", "type": "text", "label": "Кем выдан" }
+        ],
+        "next": "country"
+      },
+
+      {
+        "id": "country",
+        "type": "select-multimode",
+        "label": "Выбор стран поездки",
+        "modes": [
+          { "value": "world", "label": "Весь мир" },
+          { "value": "countries", "label": "Список стран" }
+        ],
+        "countries": "COUNTRY_LIST_35",
+        "next": "term"
+      },
+
+      {
+        "id": "term",
+        "type": "radio-group",
+        "label": "Срок доверенности",
+        "options": [
+          { "value": "days", "label": "Количество дней" },
+          { "value": "months", "label": "Количество месяцев" }
+        ],
+        "next": {
+          "days": "term_days",
+          "months": "term_months"
+        }
+      },
+
+      {
+        "id": "term_days",
+        "type": "form",
+        "fields": [
+          { "name": "term.days", "type": "number", "label": "Количество дней", "min": 1, "max": 31 }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "term_months",
+        "type": "form",
+        "fields": [
+          { "name": "term.months", "type": "number", "label": "Количество месяцев", "min": 1, "max": 36 }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "validation",
+        "type": "validation",
+        "rules": [
+          "required: trustor",
+          "required: agent",
+          "children: 1-10",
+          "country: world OR >=1",
+          "term: valid"
+        ],
+        "next": "generate"
+      },
+
+      {
+        "id": "generate",
+        "type": "final",
+        "output": "docx"
+      }
+    ],
+
+    "placeholders": [
+      "trustor[].full_name",
+      "trustor[].iin",
+      "agent[].full_name",
+      "children[].full_name",
+      "children[].birth_date",
+      "country.world",
+      "country.countries[]",
+      "term.days",
+      "term.months"
+    ]
+  }
+}
+{
+  "id": 2,
+  "code": "DOC_002",
+  "title": "Сопровождение несовершеннолетнего ребенка по РК",
+  "category": "Дети",
+  "parsed": {
+    "steps": [
+      {
+        "id": "trustor_count",
+        "type": "radio",
+        "label": "Количество доверителей",
+        "options": [
+          { "value": 1, "label": "1 родитель" },
+          { "value": 2, "label": "2 родителя" }
+        ],
+        "next": {
+          "1": "trustor.0",
+          "2": "trustor.multiple"
+        }
+      },
+
+      {
+        "id": "trustor.0",
+        "title": "Доверитель 1",
+        "type": "form",
+        "fields": [
+          { "name": "trustor[0].full_name", "type": "text", "label": "ФИО" },
+          { "name": "trustor[0].iin", "type": "text", "label": "ИИН" },
+          { "name": "trustor[0].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "trustor[0].address", "type": "text", "label": "Адрес регистрации/проживания" },
+          { "name": "trustor[0].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "trustor[0].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "trustor[0].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "trustor[0].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "trustor[0].phone", "type": "text", "label": "Телефон (опц.)" }
+        ],
+        "next": "agent_count"
+      },
+
+      {
+        "id": "trustor.multiple",
+        "type": "array",
+        "min": 2,
+        "max": 2,
+        "item_label": "Доверитель",
+        "fields": [
+          { "name": "trustor[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "trustor[].iin", "type": "text", "label": "ИИН" },
+          { "name": "trustor[].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "trustor[].address", "type": "text", "label": "Адрес" },
+          { "name": "trustor[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "trustor[].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "trustor[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "trustor[].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "trustor[].phone", "type": "text", "label": "Телефон (опц.)" }
+        ],
+        "next": "agent_count"
+      },
+
+      {
+        "id": "agent_count",
+        "type": "radio",
+        "label": "Количество поверенных",
+        "options": [
+          { "value": 1, "label": "1 поверенный" },
+          { "value": 2, "label": "2 поверенных" }
+        ],
+        "next": {
+          "1": "agent.0",
+          "2": "agent.multiple"
+        }
+      },
+
+      {
+        "id": "agent.0",
+        "title": "Поверенный 1",
+        "type": "form",
+        "fields": [
+          { "name": "agent[0].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[0].iin", "type": "text", "label": "ИИН (если есть)" },
+          { "name": "agent[0].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "agent[0].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[0].citizenship", "type": "text", "label": "Гражданство (опц.)" },
+          { "name": "agent[0].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[0].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[0].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[0].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[0].phone", "type": "text", "label": "Телефон (опц.)" }
+        ],
+        "next": "children"
+      },
+
+      {
+        "id": "agent.multiple",
+        "type": "array",
+        "min": 2,
+        "max": 2,
+        "item_label": "Поверенный",
+        "fields": [
+          { "name": "agent[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "agent[].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[].citizenship", "type": "text", "label": "Гражданство" },
+          { "name": "agent[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[].phone", "type": "text", "label": "Телефон (опц.)" }
+        ],
+        "next": "children"
+      },
+
+      {
+        "id": "children",
+        "type": "array",
+        "title": "Несовершеннолетние дети",
+        "min": 1,
+        "max": 10,
+        "fields": [
+          { "name": "children[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "children[].iin", "type": "text", "label": "ИИН" },
+          { "name": "children[].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "children[].citizenship", "type": "text", "label": "Гражданство (опц.)" },
+          { "name": "children[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "children[].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "children[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "children[].document.issued_date", "type": "date", "label": "Дата выдачи" }
+        ],
+        "next": "region_choice"
+      },
+
+      {
+        "id": "region_choice",
+        "type": "select-multimode",
+        "label": "Маршрут внутри РК",
+        "modes": [
+          { "value": "all_kz", "label": "Вся Республика Казахстан" },
+          { "value": "cities", "label": "Выбрать города" }
+        ],
+        "cities_list": "ALL_CITIES_RK",
+        "next": "term"
+      },
+
+      {
+        "id": "term",
+        "type": "radio",
+        "label": "Срок доверенности",
+        "options": [
+          { "value": "days", "label": "Количество дней" },
+          { "value": "months", "label": "Количество месяцев" }
+        ],
+        "next": {
+          "days": "term_days",
+          "months": "term_months"
+        }
+      },
+
+      {
+        "id": "term_days",
+        "type": "form",
+        "fields": [
+          { "name": "term.days", "type": "number", "label": "Количество дней", "min": 1, "max": 31 }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "term_months",
+        "type": "form",
+        "fields": [
+          { "name": "term.months", "type": "number", "label": "Количество месяцев", "min": 1, "max": 36 }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "validation",
+        "type": "validation",
+        "rules": [
+          "required: trustor",
+          "required: agent",
+          "required: children >= 1",
+          "route: all_kz OR >=1 city",
+          "term: valid"
+        ],
+        "next": "generate"
+      },
+
+      {
+        "id": "generate",
+        "type": "final",
+        "output": "docx"
+      }
+    ],
+
+    "placeholders": [
+      "trustor[].full_name",
+      "trustor[].iin",
+      "agent[].full_name",
+      "agent[].iin",
+      "children[].full_name",
+      "children[].iin",
+      "cities[]",
+      "all_kz",
+      "term.days",
+      "term.months"
+    ]
+  }
+}
+{
+  "id": 3,
+  "code": "DOC_003",
+  "title": "Доверенность на получение ТМЦ",
+  "category": "Материальные ценности",
+  "parsed": {
+    "steps": [
+
+      {
+        "id": "principal",
+        "type": "form",
+        "title": "Доверитель",
+        "fields": [
+          { "name": "principal.full_name", "type": "text", "label": "ФИО / Наименование" },
+          { "name": "principal.iin_bin", "type": "text", "label": "ИИН / БИН" },
+          { "name": "principal.address", "type": "text", "label": "Адрес" },
+          { "name": "principal.document.type", "type": "text", "label": "Тип документа / основание" },
+          { "name": "principal.document.number", "type": "text", "label": "Серия / номер" },
+          { "name": "principal.document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "principal.document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "principal.position", "type": "text", "label": "Должность (если юр. лицо)" },
+          { "name": "principal.phone", "type": "text", "label": "Телефон (опц.)" }
+        ],
+        "next": "agent_count"
+      },
+
+      {
+        "id": "agent_count",
+        "type": "radio",
+        "label": "Количество поверенных",
+        "options": [
+          { "value": 1, "label": "1 поверенный" },
+          { "value": 2, "label": "2 поверенных" }
+        ],
+        "next": {
+          "1": "agent.0",
+          "2": "agent.multiple"
+        }
+      },
+
+      {
+        "id": "agent.0",
+        "type": "form",
+        "title": "Поверенный 1",
+        "fields": [
+          { "name": "agent[0].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[0].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[0].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[0].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[0].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[0].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[0].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[0].phone", "type": "text", "label": "Телефон (опц.)" },
+          {
+            "name": "agent[0].attachments[]",
+            "type": "file",
+            "label": "Сканы документа (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "where"
+      },
+
+      {
+        "id": "agent.multiple",
+        "type": "array",
+        "item_label": "Поверенный",
+        "min": 2,
+        "max": 2,
+        "fields": [
+          { "name": "agent[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[].phone", "type": "text", "label": "Телефон (опц.)" },
+          {
+            "name": "agent[].attachments[]",
+            "type": "file",
+            "label": "Сканы документа (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "where"
+      },
+
+      {
+        "id": "where",
+        "type": "form",
+        "title": "Где и у кого забирать",
+        "fields": [
+          { "name": "where.company", "type": "text", "label": "Наименование организации" },
+          { "name": "where.iin_bin", "type": "text", "label": "ИИН / БИН (опц.)" },
+          { "name": "where.address", "type": "text", "label": "Адрес склада / офиса" },
+          { "name": "where.document_number", "type": "text", "label": "Номер договора / накладной (опц.)" }
+        ],
+        "next": "tmc"
+      },
+
+      {
+        "id": "tmc",
+        "type": "array",
+        "title": "Перечень ТМЦ",
+        "min": 1,
+        "item_label": "Позиция ТМЦ",
+        "fields": [
+          { "name": "tmc[].name", "type": "text", "label": "Наименование ТМЦ" },
+          { "name": "tmc[].model", "type": "text", "label": "Марка / модель" },
+          { "name": "tmc[].quantity", "type": "number", "label": "Количество" },
+          { "name": "tmc[].unit", "type": "text", "label": "Единица измерения" },
+          { "name": "tmc[].description", "type": "text", "label": "Примечание (опц.)" }
+        ],
+        "next": "term"
+      },
+
+      {
+        "id": "term",
+        "type": "radio",
+        "label": "Срок доверенности",
+        "options": [
+          { "value": "days", "label": "Дни (1–31)" },
+          { "value": "months", "label": "Месяцы (1–36)" }
+        ],
+        "next": {
+          "days": "term_days",
+          "months": "term_months"
+        }
+      },
+
+      {
+        "id": "term_days",
+        "type": "form",
+        "fields": [
+          { "name": "term.days", "type": "number", "min": 1, "max": 31, "label": "Количество дней" }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "term_months",
+        "type": "form",
+        "fields": [
+          { "name": "term.months", "type": "number", "min": 1, "max": 36, "label": "Количество месяцев" }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "validation",
+        "type": "validation",
+        "rules": [
+          "required: principal",
+          "required: agent >= 1",
+          "required: tmc >= 1",
+          "required: where.company",
+          "term: valid"
+        ],
+        "next": "generate"
+      },
+
+      {
+        "id": "generate",
+        "type": "final",
+        "output": "docx"
+      }
+    ],
+
+    "placeholders": [
+      "principal.full_name",
+      "agent[].full_name",
+      "agent[].iin",
+      "agent[].attachments[]",
+      "tmc[].name",
+      "tmc[].quantity",
+      "where.company",
+      "term.days",
+      "term.months"
+    ]
+  }
+}
+{
+  "id": 4,
+  "code": "DOC_004",
+  "title": "Доверенность на управление транспортным средством",
+  "category": "Авто",
+  "parsed": {
+    "steps": [
+
+      {
+        "id": "principal",
+        "type": "form",
+        "title": "Доверитель",
+        "fields": [
+          { "name": "principal.full_name", "type": "text", "label": "ФИО / Наименование" },
+          { "name": "principal.iin_bin", "type": "text", "label": "ИИН / БИН" },
+          { "name": "principal.address", "type": "text", "label": "Адрес регистрации/проживания" },
+          { "name": "principal.document.type", "type": "text", "label": "Тип удостоверяющего документа" },
+          { "name": "principal.document.number", "type": "text", "label": "Серия / номер" },
+          { "name": "principal.document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "principal.document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "principal.contact", "type": "text", "label": "Контакт (тел./email)" }
+        ],
+        "next": "agent_count"
+      },
+
+      {
+        "id": "agent_count",
+        "type": "radio",
+        "label": "Количество поверенных",
+        "options": [
+          { "value": 1, "label": "1 поверенный" },
+          { "value": 2, "label": "2 поверенных" }
+        ],
+        "next": {
+          "1": "agent.0",
+          "2": "agent.multiple"
+        }
+      },
+
+      {
+        "id": "agent.0",
+        "type": "form",
+        "title": "Поверенный 1",
+        "fields": [
+          { "name": "agent[0].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[0].iin", "type": "text", "label": "ИИН (если есть)" },
+          {
+            "name": "agent[0].document.type",
+            "type": "text",
+            "label": "Тип документа"
+          },
+          {
+            "name": "agent[0].document.number",
+            "type": "text",
+            "label": "Серия / номер"
+          },
+          {
+            "name": "agent[0].document.issued_by",
+            "type": "text",
+            "label": "Кем выдан"
+          },
+          {
+            "name": "agent[0].document.issued_date",
+            "type": "date",
+            "label": "Дата выдачи"
+          },
+          { "name": "agent[0].address", "type": "text", "label": "Адрес / контакты" },
+          {
+            "name": "agent[0].attachments[]",
+            "type": "file",
+            "label": "Сканы документа (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "vehicle"
+      },
+
+      {
+        "id": "agent.multiple",
+        "type": "array",
+        "min": 2,
+        "max": 2,
+        "item_label": "Поверенный",
+        "fields": [
+          { "name": "agent[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[].document.number", "type": "text", "label": "Серия / номер" },
+          { "name": "agent[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          {
+            "name": "agent[].attachments[]",
+            "type": "file",
+            "label": "Сканы документа (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "vehicle"
+      },
+
+      {
+        "id": "vehicle",
+        "type": "form",
+        "title": "Данные транспортного средства",
+        "fields": [
+          { "name": "vehicle.type", "type": "text", "label": "Тип ТС (легковой/грузовой/...)" },
+          { "name": "vehicle.brand", "type": "text", "label": "Марка" },
+          { "name": "vehicle.model", "type": "text", "label": "Модель" },
+          { "name": "vehicle.plate_number", "type": "text", "label": "Гос. номер" },
+          { "name": "vehicle.vin", "type": "text", "label": "VIN / шасси / кузов" },
+          { "name": "vehicle.year", "type": "number", "label": "Год выпуска" },
+          { "name": "vehicle.reg_document.number", "type": "text", "label": "Регистрационный документ — серия/номер" },
+          { "name": "vehicle.reg_document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "vehicle.reg_document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "vehicle.note", "type": "text", "label": "Примечание (опц.)" }
+        ],
+        "next": "term_choice"
+      },
+
+      {
+        "id": "term_choice",
+        "type": "radio",
+        "label": "Срок доверенности",
+        "options": [
+          { "value": "days", "label": "Дни (1–31)" },
+          { "value": "months", "label": "Месяцы (1–36)" }
+        ],
+        "next": {
+          "days": "term_days",
+          "months": "term_months"
+        }
+      },
+
+      {
+        "id": "term_days",
+        "type": "form",
+        "fields": [
+          { "name": "term.days", "type": "number", "label": "Количество дней", "min": 1, "max": 31 }
+        ],
+        "next": "delegation"
+      },
+
+      {
+        "id": "term_months",
+        "type": "form",
+        "fields": [
+          { "name": "term.months", "type": "number", "label": "Количество месяцев", "min": 1, "max": 36 }
+        ],
+        "next": "delegation"
+      },
+
+      {
+        "id": "delegation",
+        "type": "radio",
+        "label": "Право передоверия",
+        "options": [
+          { "value": "yes", "label": "Да" },
+          { "value": "no", "label": "Нет" }
+        ],
+        "next": "region_choice"
+      },
+
+      {
+        "id": "region_choice",
+        "type": "checkbox-group",
+        "label": "Где действует доверенность?",
+        "options": [
+          { "value": "cities", "label": "Только по городам РК" },
+          { "value": "all_kz", "label": "Вся Республика Казахстан" },
+          { "value": "outside", "label": "Также за пределы РК" }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "validation",
+        "type": "validation",
+        "rules": [
+          "required: principal",
+          "required: agent >= 1",
+          "required: vehicle.vin OR vehicle.plate_number",
+          "term: valid",
+          "required: region_choice >= 1"
+        ],
+        "next": "generate"
+      },
+
+      {
+        "id": "generate",
+        "type": "final",
+        "output": "docx"
+      }
+    ],
+
+    "placeholders": [
+      "principal.full_name",
+      "principal.iin_bin",
+      "agent[].full_name",
+      "agent[].attachments[]",
+      "vehicle.type",
+      "vehicle.brand",
+      "vehicle.model",
+      "vehicle.plate_number",
+      "vehicle.vin",
+      "term.days",
+      "term.months",
+      "region_choice[]"
+    ]
+  }
+}
+{
+  "id": 5,
+  "code": "DOC_005",
+  "title": "Доверенность на продажу транспортного средства",
+  "category": "Авто — сделки",
+  "parsed": {
+    "steps": [
+
+      {
+        "id": "trustor",
+        "type": "form",
+        "title": "Доверитель",
+        "fields": [
+          { "name": "trustor.full_name", "label": "ФИО", "type": "text" },
+          { "name": "trustor.iin", "label": "ИИН", "type": "text" },
+          { "name": "trustor.birth_date", "label": "Дата рождения", "type": "date" },
+          { "name": "trustor.address", "label": "Адрес регистрации", "type": "text" },
+          { "name": "trustor.document.type", "label": "Тип документа", "type": "text" },
+          { "name": "trustor.document.number", "label": "Серия/номер", "type": "text" },
+          { "name": "trustor.document.issued_by", "label": "Кем выдан", "type": "text" },
+          { "name": "trustor.document.issued_date", "label": "Дата выдачи", "type": "date" },
+          { "name": "trustor.phone", "label": "Телефон (опц.)", "type": "text" }
+        ],
+        "next": "agent_count"
+      },
+
+      {
+        "id": "agent_count",
+        "type": "radio",
+        "label": "Количество поверенных",
+        "options": [
+          { "value": 1, "label": "1 поверенный" },
+          { "value": 2, "label": "2 поверенных" }
+        ],
+        "next": {
+          "1": "agent.0",
+          "2": "agent.multiple"
+        }
+      },
+
+      {
+        "id": "agent.0",
+        "type": "form",
+        "title": "Поверенный 1",
+        "fields": [
+          { "name": "agent[0].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[0].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[0].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "agent[0].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[0].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[0].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[0].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[0].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[0].phone", "type": "text", "label": "Контакты" },
+          {
+            "name": "agent[0].attachments[]",
+            "type": "file",
+            "label": "Сканы документа (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "vehicle"
+      },
+
+      {
+        "id": "agent.multiple",
+        "type": "array",
+        "title": "Поверенные",
+        "min": 2,
+        "max": 2,
+        "item_label": "Поверенный",
+        "fields": [
+          { "name": "agent[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[].birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "agent[].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[].phone", "type": "text", "label": "Контакты" },
+          {
+            "name": "agent[].attachments[]",
+            "type": "file",
+            "label": "Сканы документа (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "vehicle"
+      },
+
+      {
+        "id": "vehicle",
+        "type": "form",
+        "title": "Данные транспортного средства",
+        "fields": [
+          { "name": "vehicle.type", "label": "Тип ТС", "type": "text" },
+          { "name": "vehicle.brand", "label": "Марка", "type": "text" },
+          { "name": "vehicle.model", "label": "Модель", "type": "text" },
+          { "name": "vehicle.plate_number", "label": "Гос. номер", "type": "text" },
+          { "name": "vehicle.vin", "label": "VIN / кузов / рама", "type": "text" },
+          { "name": "vehicle.year", "label": "Год выпуска", "type": "number" },
+          { "name": "vehicle.reg_doc.number", "label": "Регистрационный документ — серия/номер", "type": "text" },
+          { "name": "vehicle.reg_doc.issued_by", "label": "Кем выдан", "type": "text" },
+          { "name": "vehicle.reg_doc.issued_date", "label": "Дата выдачи", "type": "date" }
+        ],
+        "next": "term"
+      },
+
+      {
+        "id": "term",
+        "type": "radio",
+        "label": "Срок доверенности",
+        "options": [
+          { "value": "days", "label": "Дни (1–31)" },
+          { "value": "months", "label": "Месяцы (1–36)" }
+        ],
+        "next": {
+          "days": "term_days",
+          "months": "term_months"
+        }
+      },
+
+      {
+        "id": "term_days",
+        "type": "form",
+        "fields": [
+          { "name": "term.days", "type": "number", "label": "Количество дней", "min": 1, "max": 31 }
+        ],
+        "next": "delegation"
+      },
+
+      {
+        "id": "term_months",
+        "type": "form",
+        "fields": [
+          { "name": "term.months", "type": "number", "label": "Количество месяцев", "min": 1, "max": 36 }
+        ],
+        "next": "delegation"
+      },
+
+      {
+        "id": "delegation",
+        "type": "radio",
+        "label": "Право передоверия",
+        "options": [
+          { "value": "yes", "label": "Да" },
+          { "value": "no", "label": "Нет" }
+        ],
+        "next": "rights"
+      },
+
+      {
+        "id": "rights",
+        "type": "checkbox-group",
+        "title": "Объём полномочий",
+        "options": [
+          { "value": "sell", "label": "Продавать транспортное средство" },
+          { "value": "sign_contract", "label": "Подписывать договор купли-продажи" },
+          { "value": "submit_docs", "label": "Подавать документы в спецЦОН" },
+          { "value": "register_ops", "label": "Ставить/снимать ТС с регистрации" },
+          { "value": "receive_money", "label": "Получать денежные средства" },
+          { "value": "sign_act", "label": "Подписывать акт приёма-передачи" },
+          { "value": "new_plates", "label": "Получать новые номера" },
+          { "value": "return_plates", "label": "Сдавать старые номера" },
+          { "value": "get_docs", "label": "Забирать документы из спецЦОНа" },
+          { "value": "all", "label": "Выбрать всё" }
+        ],
+        "next": "region"
+      },
+
+      {
+        "id": "region",
+        "type": "checkbox-group",
+        "label": "Регион действия доверенности",
+        "options": [
+          { "value": "rk_cities", "label": "Только по городам РК" },
+          { "value": "all_kz", "label": "Вся Республика Казахстан" },
+          { "value": "outside", "label": "Включая за пределами РК" }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "validation",
+        "type": "validation",
+        "rules": [
+          "required: trustor",
+          "required: agent >= 1",
+          "required: vehicle.vin OR vehicle.plate_number",
+          "required: rights >= 1",
+          "required: region >= 1",
+          "term: valid"
+        ],
+        "next": "generate"
+      },
+
+      {
+        "id": "generate",
+        "type": "final",
+        "output": "docx"
+      }
+    ],
+
+    "placeholders": [
+      "trustor.full_name",
+      "trustor.iin",
+      "agent[].full_name",
+      "agent[].iin",
+      "agent[].attachments[]",
+      "vehicle.type",
+      "vehicle.brand",
+      "vehicle.model",
+      "vehicle.plate_number",
+      "vehicle.vin",
+      "rights[]",
+      "region[]",
+      "term.days",
+      "term.months"
+    ]
+  }
+}
+{
+  "id": 6,
+  "code": "DOC_006",
+  "title": "Согласие супруга(и) на совершение сделок",
+  "category": "Сделки / Семья",
+  "parsed": {
+    "steps": [
+
+      {
+        "id": "txn_types",
+        "type": "checkbox-group",
+        "title": "Тип(ы) сделки",
+        "label": "Выберите тип сделки",
+        "options": [
+          { "value": "buy",    "label": "Покупка" },
+          { "value": "sell",   "label": "Продажа" },
+          { "value": "pledge", "label": "Залог / Ипотека" }
+        ],
+        "validation": { "min": 1 },
+        "next": "who_gives"
+      },
+
+      {
+        "id": "who_gives",
+        "type": "radio",
+        "label": "Кто даёт согласие?",
+        "options": [
+          { "value": "husband", "label": "Супруг" },
+          { "value": "wife",    "label": "Супруга" }
+        ],
+        "next": "spouse_data"
+      },
+
+      {
+        "id": "spouse_data",
+        "type": "form",
+        "title": "Данные дающего согласие",
+        "fields": [
+          { "name": "spouse.full_name", "type": "text", "label": "ФИО" },
+          { "name": "spouse.iin", "type": "text", "label": "ИИН" },
+          { "name": "spouse.address", "type": "text", "label": "Адрес" },
+          { "name": "spouse.document.type", "type": "text", "label": "Тип документа" },
+          { "name": "spouse.document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "spouse.document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "spouse.document.issued_date", "type": "date", "label": "Дата выдачи" },
+          {
+            "name": "spouse.attachments[]",
+            "type": "file",
+            "label": "Сканы документа (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "who_receives"
+      },
+
+      {
+        "id": "who_receives",
+        "type": "radio",
+        "label": "Кому даётся согласие?",
+        "options": [
+          { "value": "other_spouse", "label": "Другому супругу" },
+          { "value": "third_person", "label": "Третьему лицу" },
+          { "value": "organization", "label": "Организации" }
+        ],
+        "next": {
+          "other_spouse": "property_logic",
+          "third_person": "receiver_data",
+          "organization": "receiver_data"
+        }
+      },
+
+      {
+        "id": "receiver_data",
+        "type": "form",
+        "title": "Данные получателя согласия",
+        "fields": [
+          { "name": "receiver.full_name", "type": "text", "label": "ФИО / Наименование" },
+          { "name": "receiver.iin_bin", "type": "text", "label": "ИИН / БИН" },
+          { "name": "receiver.document", "type": "text", "label": "Документ / реквизиты" },
+          { "name": "receiver.contact", "type": "text", "label": "Контакт" }
+        ],
+        "next": "property_logic"
+      },
+
+      {
+        "id": "property_logic",
+        "type": "logic",
+        "test": "txn_types contains 'buy' OR 'sell' OR 'pledge'",
+        "next": {
+          "true": "property_type",
+          "false": "term"
+        }
+      },
+
+      {
+        "id": "property_type",
+        "type": "radio",
+        "title": "Тип объекта недвижимости",
+        "options": [
+          { "value": "apartment", "label": "Квартира" },
+          { "value": "house", "label": "Жилой дом" },
+          { "value": "land", "label": "Земельный участок" },
+          { "value": "share", "label": "Доля" },
+          { "value": "parking", "label": "Паркинг / Машиноместо" },
+          { "value": "non_residential", "label": "Нежилое помещение" },
+          { "value": "other", "label": "Другое" }
+        ],
+        "next": "property_details"
+      },
+
+      {
+        "id": "property_details",
+        "type": "form",
+        "title": "Характеристики объекта",
+        "fields": [
+          { "name": "property.address", "type": "text", "label": "Адрес" },
+          { "name": "property.cadastral_number", "type": "text", "label": "Кадастровый номер" },
+          { "name": "property.docs", "type": "text", "label": "Правоустанавливающие документы" },
+          { "name": "property.area", "type": "text", "label": "Площадь / этажность" },
+          { "name": "property.note", "type": "text", "label": "Примечание" }
+        ],
+        "next": "term"
+      },
+
+      {
+        "id": "term",
+        "type": "radio",
+        "label": "Срок согласия",
+        "options": [
+          { "value": "days", "label": "Дни (1–31)" },
+          { "value": "months", "label": "Месяцы (1–36)" }
+        ],
+        "next": {
+          "days": "term_days",
+          "months": "term_months"
+        }
+      },
+
+      {
+        "id": "term_days",
+        "type": "form",
+        "fields": [
+          { "name": "term.days", "type": "number", "label": "Количество дней", "min": 1, "max": 31 }
+        ],
+        "next": "price"
+      },
+
+      {
+        "id": "term_months",
+        "type": "form",
+        "fields": [
+          { "name": "term.months", "type": "number", "label": "Количество месяцев", "min": 1, "max": 36 }
+        ],
+        "next": "price"
+      },
+
+      {
+        "id": "price",
+        "type": "radio",
+        "label": "Цена сделки / ограничение",
+        "options": [
+          { "value": "exact", "label": "Указать сумму" },
+          { "value": "unlimited", "label": "Без ограничения / по усмотрению" },
+          { "value": "range", "label": "Указать диапазон" }
+        ],
+        "next": {
+          "exact": "price_exact",
+          "unlimited": "validation",
+          "range": "price_range"
+        }
+      },
+
+      {
+        "id": "price_exact",
+        "type": "form",
+        "fields": [
+          { "name": "price.amount", "type": "number", "label": "Сумма" },
+          { "name": "price.currency", "type": "text", "label": "Валюта" }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "price_range",
+        "type": "form",
+        "fields": [
+          { "name": "price.min", "type": "number", "label": "Минимальная сумма" },
+          { "name": "price.max", "type": "number", "label": "Максимальная сумма" }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "validation",
+        "type": "validation",
+        "rules": [
+          "required: txn_types >= 1",
+          "required: spouse.full_name",
+          "required: who_receives",
+          "if txn_types contains real_estate: required property",
+          "term: valid",
+          "required: price option selected"
+        ],
+        "next": "generate"
+      },
+
+      {
+        "id": "generate",
+        "type": "final",
+        "output": "docx"
+      }
+    ],
+
+    "placeholders": [
+      "txn_types[]",
+      "spouse.full_name",
+      "spouse.iin",
+      "spouse.attachments[]",
+      "receiver.full_name",
+      "property.address",
+      "property.cadastral_number",
+      "term.days",
+      "term.months",
+      "price.amount",
+      "price.min",
+      "price.max"
+    ]
+  }
+}
+{
+  "id": 7,
+  "code": "DOC_007",
+  "title": "Доверенность на получение документов",
+  "category": "Документы / Органы / Справки",
+  "parsed": {
+    "steps": [
+
+      {
+        "id": "principal",
+        "type": "form",
+        "title": "Доверитель",
+        "fields": [
+          { "name": "principal.full_name", "type": "text", "label": "ФИО / Наименование" },
+          { "name": "principal.iin_bin", "type": "text", "label": "ИИН / БИН" },
+          { "name": "principal.address", "type": "text", "label": "Адрес" },
+          { "name": "principal.document.type", "type": "text", "label": "Тип документа" },
+          { "name": "principal.document.number", "type": "text", "label": "Серия / номер" },
+          { "name": "principal.document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "principal.document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "principal.phone", "type": "text", "label": "Телефон (опц.)" },
+          {
+            "name": "principal.attachments[]",
+            "type": "file",
+            "label": "Сканы документа доверителя (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "agent_count"
+      },
+
+      {
+        "id": "agent_count",
+        "type": "radio",
+        "label": "Количество поверенных",
+        "options": [
+          { "value": 1, "label": "1 поверенный" },
+          { "value": 2, "label": "2 поверенных" }
+        ],
+        "next": {
+          "1": "agent.0",
+          "2": "agent.multiple"
+        }
+      },
+
+      {
+        "id": "agent.0",
+        "type": "form",
+        "title": "Поверенный 1",
+        "fields": [
+          { "name": "agent[0].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[0].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[0].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[0].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[0].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[0].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[0].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[0].phone", "type": "text", "label": "Телефон (опц.)" },
+          {
+            "name": "agent[0].attachments[]",
+            "type": "file",
+            "label": "Сканы документа поверенного (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "term"
+      },
+
+      {
+        "id": "agent.multiple",
+        "type": "array",
+        "min": 2,
+        "max": 2,
+        "item_label": "Поверенный",
+        "fields": [
+          { "name": "agent[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[].phone", "type": "text", "label": "Телефон (опц.)" },
+          {
+            "name": "agent[].attachments[]",
+            "type": "file",
+            "label": "Сканы документа поверенного (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "term"
+      },
+
+      {
+        "id": "term",
+        "type": "radio",
+        "label": "Срок доверенности",
+        "options": [
+          { "value": "days", "label": "Дни (1–31)" },
+          { "value": "months", "label": "Месяцы (1–36)" }
+        ],
+        "next": {
+          "days": "term_days",
+          "months": "term_months"
+        }
+      },
+
+      {
+        "id": "term_days",
+        "type": "form",
+        "fields": [
+          { "name": "term.days", "type": "number", "label": "Количество дней", "min": 1, "max": 31 }
+        ],
+        "next": "doc_groups"
+      },
+
+      {
+        "id": "term_months",
+        "type": "form",
+        "fields": [
+          { "name": "term.months", "type": "number", "label": "Количество месяцев", "min": 1, "max": 36 }
+        ],
+        "next": "doc_groups"
+      },
+
+      {
+        "id": "doc_groups",
+        "type": "checkbox-group",
+        "title": "Группы документов",
+        "options": [
+          { "value": "tax", "label": "Документы из налоговых органов" },
+          { "value": "medical", "label": "Документы медучреждений" },
+          { "value": "employer", "label": "Документы работодателя" },
+          { "value": "transport", "label": "Документы по транспорту" },
+          { "value": "real_estate", "label": "Документы недвижимости" },
+          { "value": "bank", "label": "Банковские документы" },
+          { "value": "court", "label": "Судебные/юридические документы" },
+          { "value": "other", "label": "Прочие" }
+        ],
+        "validation": { "min": 1 },
+        "next": "subgroups"
+      },
+
+      {
+        "id": "subgroups",
+        "type": "dynamic-subgroups",
+        "title": "Выберите конкретные документы",
+        "groups": {
+          "tax": [
+            { "value": "kgd_debt", "label": "Справка о задолженности" },
+            { "value": "kgd_tax_info", "label": "Справки по налогам" },
+            { "value": "kgd_statement", "label": "Выписка по счету КГД" }
+          ],
+          "medical": [
+            { "value": "med_cert", "label": "Медицинская справка" },
+            { "value": "med_card", "label": "Выписка из медкарты" },
+            { "value": "med_for_orgs", "label": "Справка для органов" }
+          ],
+          "employer": [
+            { "value": "salary", "label": "Справка о заработной плате" },
+            { "value": "workplace", "label": "Справка о месте работы" },
+            { "value": "character", "label": "Характеристика" }
+          ],
+          "transport": [
+            { "value": "sts", "label": "Техпаспорт" },
+            { "value": "reg_cert", "label": "Свидетельство о регистрации ТС" },
+            { "value": "plate_dup", "label": "Дубликат номера" }
+          ],
+          "real_estate": [
+            { "value": "tech_pass", "label": "Техпаспорт" },
+            { "value": "cadastral_extract", "label": "Кадастровая выписка" },
+            { "value": "ownership", "label": "Справка о праве собственности" }
+          ],
+          "bank": [
+            { "value": "bank_statement", "label": "Выписка по счету" },
+            { "value": "bank_balance", "label": "Справка об остатке" },
+            { "value": "deposit_info", "label": "Справка по депозиту" }
+          ],
+          "court": [
+            { "value": "court_decision", "label": "Решение суда" },
+            { "value": "exec_list", "label": "Исполнительный лист" },
+            { "value": "court_copy", "label": "Копия судебного акта" }
+          ],
+          "other": [
+            { "value": "other_custom", "label": "Другой документ (ручной ввод)" }
+          ]
+        },
+        "allow_select_all": true,
+        "next": "institutions"
+      },
+
+      {
+        "id": "institutions",
+        "type": "checkbox-group",
+        "title": "Где получать документы",
+        "allow_select_all": true,
+        "options": [
+          { "value": "tsone", "label": "ЦОН / СпецЦОН" },
+          { "value": "bank", "label": "Банк" },
+          { "value": "enpf", "label": "ЕНПФ" },
+          { "value": "court", "label": "Суд" },
+          { "value": "kgd", "label": "Налоговый комитет" },
+          { "value": "clinic", "label": "Поликлиника / Больница" },
+          { "value": "employer", "label": "Работодатель" },
+          { "value": "archive", "label": "Архив" },
+          { "value": "post", "label": "Почта / Казпочта" },
+          { "value": "other", "label": "Другое учреждение" }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "validation",
+        "type": "validation",
+        "rules": [
+          "required: principal",
+          "required: agent >= 1",
+          "required: doc_groups >= 1",
+          "required: subgroups >= 1",
+          "required: institutions >= 1",
+          "term: valid"
+        ],
+        "next": "generate"
+      },
+
+      {
+        "id": "generate",
+        "type": "final",
+        "output": "docx"
+      }
+    ],
+
+    "placeholders": [
+      "principal.full_name",
+      "principal.iin_bin",
+      "agent[].full_name",
+      "agent[].iin",
+      "doc_groups[]",
+      "subgroups[]",
+      "institutions[]",
+      "term.days",
+      "term.months"
+    ]
+  }
+}
+{
+  "id": 8,
+  "code": "DOC_008",
+  "title": "Доверенность на получение пособий",
+  "category": "Социальные выплаты / Пособия",
+  "parsed": {
+    "steps": [
+
+      {
+        "id": "principal",
+        "type": "form",
+        "title": "Доверитель",
+        "fields": [
+          { "name": "principal.full_name", "type": "text", "label": "ФИО" },
+          { "name": "principal.iin", "type": "text", "label": "ИИН" },
+          { "name": "principal.birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "principal.address", "type": "text", "label": "Адрес" },
+          { "name": "principal.document.type", "type": "text", "label": "Тип документа" },
+          { "name": "principal.document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "principal.document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "principal.document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "principal.phone", "type": "text", "label": "Контакт" },
+          {
+            "name": "principal.attachments[]",
+            "type": "file",
+            "label": "Сканы документа доверителя (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "agent_count"
+      },
+
+      {
+        "id": "agent_count",
+        "type": "radio",
+        "label": "Поверенных",
+        "options": [
+          { "value": 1, "label": "1 поверенный" },
+          { "value": 2, "label": "2 поверенных" }
+        ],
+        "next": {
+          "1": "agent.0",
+          "2": "agent.multiple"
+        }
+      },
+
+      {
+        "id": "agent.0",
+        "type": "form",
+        "title": "Поверенный 1",
+        "fields": [
+          { "name": "agent[0].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[0].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[0].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[0].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[0].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[0].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[0].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[0].phone", "type": "text", "label": "Телефон" },
+          {
+            "name": "agent[0].attachments[]",
+            "type": "file",
+            "label": "Сканы документа поверенного (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "benefit_groups"
+      },
+
+      {
+        "id": "agent.multiple",
+        "type": "array",
+        "min": 2,
+        "max": 2,
+        "item_label": "Поверенный",
+        "fields": [
+          { "name": "agent[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[].phone", "type": "text", "label": "Телефон" },
+          {
+            "name": "agent[].attachments[]",
+            "type": "file",
+            "label": "Сканы документа поверенного (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "benefit_groups"
+      },
+
+      {
+        "id": "benefit_groups",
+        "type": "checkbox-group",
+        "title": "Виды пособий",
+        "options": [
+          { "value": "social", "label": "Социальные пособия" },
+          { "value": "enpf", "label": "Пенсии / ЕНПФ" },
+          { "value": "loss", "label": "Пособие по потере кормильца" },
+          { "value": "disability", "label": "Инвалидность / Уход" },
+          { "value": "ssf", "label": "Фонд соц. страхования" },
+          { "value": "other", "label": "Прочие" }
+        ],
+        "validation": { "min": 1 },
+        "next": "benefit_subgroups"
+      },
+
+      {
+        "id": "benefit_subgroups",
+        "type": "dynamic-subgroups",
+        "title": "Подпункты выбранных категорий",
+        "groups": {
+          "social": [
+            { "value": "childbirth", "label": "Пособия по родам" },
+            { "value": "care", "label": "Пособия по уходу" }
+          ],
+          "enpf": [
+            { "value": "pension", "label": "Пенсии" },
+            { "value": "withdraw", "label": "ЕНПФ — Выписки / Снятие" }
+          ],
+          "loss": [
+            { "value": "loss_child", "label": "По ребёнку" },
+            { "value": "loss_parent", "label": "По родителю" }
+          ],
+          "disability": [
+            { "value": "dis1", "label": "Группа инвалидности 1" },
+            { "value": "dis2", "label": "Группа инвалидности 2" },
+            { "value": "dis3", "label": "Группа инвалидности 3" }
+          ],
+          "ssf": [
+            { "value": "ssf_payment", "label": "Выплаты ФСС" }
+          ],
+          "other": [
+            { "value": "other_custom", "label": "Другое (ручной ввод)" }
+          ]
+        },
+        "allow_select_all": true,
+        "next": "child_logic"
+      },
+
+      {
+        "id": "child_logic",
+        "type": "logic",
+        "test": "benefit_subgroups contains 'loss_child' OR 'loss_parent' OR 'childbirth' OR 'care' OR 'dis1' OR 'dis2' OR 'dis3'",
+        "next": {
+          "true": "child_data",
+          "false": "where_get"
+        }
+      },
+
+      {
+        "id": "child_data",
+        "type": "form",
+        "title": "Данные ребёнка / инвалида",
+        "fields": [
+          { "name": "child.full_name", "type": "text", "label": "ФИО" },
+          { "name": "child.iin", "type": "text", "label": "ИИН" },
+          { "name": "child.birth_date", "type": "date", "label": "Дата рождения" },
+          { "name": "child.group", "type": "text", "label": "Группа инвалидности (если применимо)" },
+          { "name": "child.document.type", "type": "text", "label": "Тип документа" },
+          { "name": "child.document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "child.document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "child.document.issued_date", "type": "date", "label": "Дата выдачи" }
+        ],
+        "next": "where_get"
+      },
+
+      {
+        "id": "where_get",
+        "type": "checkbox-group",
+        "title": "Где получать пособия",
+        "allow_select_all": true,
+        "options": [
+          { "value": "gc", "label": "ГЦВП" },
+          { "value": "ssf_center", "label": "Фонд соц. страхования" },
+          { "value": "enpf", "label": "ЕНПФ" },
+          { "value": "akimat", "label": "Акимат / УСЗН" },
+          { "value": "bank", "label": "Банк" },
+          { "value": "post", "label": "Почта / Казпочта" },
+          { "value": "other", "label": "Другое учреждение" }
+        ],
+        "next": "rights"
+      },
+
+      {
+        "id": "rights",
+        "type": "checkbox-group",
+        "title": "Права поверенного",
+        "allow_select_all": true,
+        "options": [
+          { "value": "receive_money", "label": "Получать выплаты" },
+          { "value": "sign_docs", "label": "Подписывать документы" },
+          { "value": "submit_apps", "label": "Подача заявлений" },
+          { "value": "receive_notifications", "label": "Получать уведомления" },
+          { "value": "manage_account", "label": "Открывать/управлять счетом" }
+        ],
+        "next": "payment_type"
+      },
+
+      {
+        "id": "payment_type",
+        "type": "checkbox-group",
+        "title": "Тип выплат",
+        "options": [
+          { "value": "single", "label": "Разовая" },
+          { "value": "monthly", "label": "Ежемесячная" }
+        ],
+        "validation": { "min": 1 },
+        "next": "amount_limit"
+      },
+
+      {
+        "id": "amount_limit",
+        "type": "radio",
+        "label": "Ограничение по сумме",
+        "options": [
+          { "value": "none", "label": "Без ограничения" },
+          { "value": "exact", "label": "Указать сумму" },
+          { "value": "range", "label": "Диапазон" }
+        ],
+        "next": {
+          "none": "appearance",
+          "exact": "amount_exact",
+          "range": "amount_range"
+        }
+      },
+
+      {
+        "id": "amount_exact",
+        "type": "form",
+        "fields": [
+          { "name": "amount.value", "type": "number", "label": "Сумма" },
+          { "name": "amount.currency", "type": "text", "label": "Валюта" }
+        ],
+        "next": "appearance"
+      },
+
+      {
+        "id": "amount_range",
+        "type": "form",
+        "fields": [
+          { "name": "amount.min", "type": "number", "label": "Min" },
+          { "name": "amount.max", "type": "number", "label": "Max" }
+        ],
+        "next": "appearance"
+      },
+
+      {
+        "id": "appearance",
+        "type": "radio",
+        "label": "Обратившийся действует",
+        "options": [
+          { "value": "personal", "label": "Лично" },
+          { "value": "poa", "label": "По доверенности" }
+        ],
+        "next": {
+          "personal": "term_choice",
+          "poa": "poa_details"
+        }
+      },
+
+      {
+        "id": "poa_details",
+        "type": "form",
+        "title": "Реквизиты исходной доверенности",
+        "fields": [
+          { "name": "source_poa.reg_num", "type": "text", "label": "Реестровый номер" },
+          { "name": "source_poa.notary", "type": "text", "label": "Кем выдана" },
+          { "name": "source_poa.issue_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "source_poa.license_number", "type": "text", "label": "Номер лицензии нотариуса" },
+          { "name": "source_poa.license_date", "type": "date", "label": "Дата выдачи лицензии" },
+          { "name": "source_poa.license_issuer", "type": "text", "label": "Кем выдана лицензия" }
+        ],
+        "next": "term_choice"
+      },
+
+      {
+        "id": "term_choice",
+        "type": "radio",
+        "label": "Срок доверенности",
+        "options": [
+          { "value": "days", "label": "Дни (1–31)" },
+          { "value": "months", "label": "Месяцы (1–36)" }
+        ],
+        "next": {
+          "days": "term_days",
+          "months": "term_months"
+        }
+      },
+
+      {
+        "id": "term_days",
+        "type": "form",
+        "fields": [
+          { "name": "term.days", "type": "number", "min": 1, "max": 31, "label": "Количество дней" }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "term_months",
+        "type": "form",
+        "fields": [
+          { "name": "term.months", "type": "number", "min": 1, "max": 36, "label": "Количество месяцев" }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "validation",
+        "type": "validation",
+        "rules": [
+          "required: principal",
+          "required: agent >= 1",
+          "required: benefit_groups >= 1",
+          "required: benefit_subgroups >= 1",
+          "if child_logic: required child",
+          "required: where_get >= 1",
+          "required: rights >= 1",
+          "required: payment_type >= 1",
+          "if appearance == poa: required source_poa",
+          "term: valid"
+        ],
+        "next": "generate"
+      },
+
+      {
+        "id": "generate",
+        "type": "final",
+        "output": "docx"
+      }
+    ],
+
+    "placeholders": [
+      "principal.full_name",
+      "agent[].full_name",
+      "benefit_groups[]",
+      "benefit_subgroups[]",
+      "child.full_name",
+      "where_get[]",
+      "rights[]",
+      "amount.value",
+      "amount.min",
+      "amount.max",
+      "term.days",
+      "term.months"
+    ]
+  }
+}
+{
+  "id": 9,
+  "code": "DOC_009",
+  "title": "Доверенность — представление интересов в суде",
+  "category": "Суды / Представительство",
+  "parsed": {
+    "steps": [
+
+      {
+        "id": "principal",
+        "type": "form",
+        "title": "Доверитель",
+        "fields": [
+          { "name": "principal.full_name", "type": "text", "label": "ФИО / Наименование" },
+          { "name": "principal.iin_bin", "type": "text", "label": "ИИН / БИН" },
+          { "name": "principal.address", "type": "text", "label": "Адрес" },
+          { "name": "principal.document.type", "type": "text", "label": "Тип документа" },
+          { "name": "principal.document.number", "type": "text", "label": "Серия / номер" },
+          { "name": "principal.document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "principal.document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "principal.phone", "type": "text", "label": "Контакты" },
+          {
+            "name": "principal.attachments[]",
+            "type": "file",
+            "label": "Сканы документа доверителя (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "agent_count"
+      },
+
+      {
+        "id": "agent_count",
+        "type": "radio",
+        "label": "Количество поверенных",
+        "options": [
+          { "value": 1, "label": "1 поверенный" },
+          { "value": 2, "label": "2 поверенных" }
+        ],
+        "next": {
+          "1": "agent.0",
+          "2": "agent.multiple"
+        }
+      },
+
+      {
+        "id": "agent.0",
+        "type": "form",
+        "title": "Поверенный 1",
+        "fields": [
+          { "name": "agent[0].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[0].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[0].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[0].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[0].document.number", "type": "text", "label": "Серия/номер" },
+          { "name": "agent[0].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[0].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[0].phone", "type": "text", "label": "Контакт" },
+          {
+            "name": "agent[0].attachments[]",
+            "type": "file",
+            "label": "Сканы документа поверенного (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "court_type"
+      },
+
+      {
+        "id": "agent.multiple",
+        "type": "array",
+        "title": "Поверенные",
+        "min": 2,
+        "max": 2,
+        "item_label": "Поверенный",
+        "fields": [
+          { "name": "agent[].full_name", "type": "text", "label": "ФИО" },
+          { "name": "agent[].iin", "type": "text", "label": "ИИН" },
+          { "name": "agent[].address", "type": "text", "label": "Адрес" },
+          { "name": "agent[].document.type", "type": "text", "label": "Тип документа" },
+          { "name": "agent[].document.number", "type": "text", "label": "Серия / номер" },
+          { "name": "agent[].document.issued_by", "type": "text", "label": "Кем выдан" },
+          { "name": "agent[].document.issued_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "agent[].phone", "type": "text", "label": "Контакт" },
+          {
+            "name": "agent[].attachments[]",
+            "type": "file",
+            "label": "Сканы документа поверенного (2 файла)",
+            "min": 2,
+            "max": 2
+          }
+        ],
+        "next": "court_type"
+      },
+
+      {
+        "id": "court_type",
+        "type": "checkbox-group",
+        "title": "Тип суда",
+        "allow_select_all": true,
+        "options": [
+          { "value": "district", "label": "Районный / Городской" },
+          { "value": "regional", "label": "Областной" },
+          { "value": "supreme", "label": "Верховный Суд" },
+          { "value": "administrative", "label": "Административный" },
+          { "value": "economic", "label": "Экономический / Арбитраж" },
+          { "value": "special", "label": "Специализированные суды" }
+        ],
+        "validation": { "min": 1 },
+        "next": "case_type"
+      },
+
+      {
+        "id": "case_type",
+        "type": "checkbox-group",
+        "title": "Тип дела",
+        "allow_select_all": true,
+        "options": [
+          { "value": "civil", "label": "Гражданское" },
+          { "value": "administrative", "label": "Административное" },
+          { "value": "criminal", "label": "Уголовное" },
+          { "value": "economic", "label": "Экономическое" },
+          { "value": "family", "label": "Семейное" },
+          { "value": "execution", "label": "Исполнительное производство" },
+          { "value": "appeal", "label": "Апелляция / Кассация" }
+        ],
+        "validation": { "min": 1 },
+        "next": "subject"
+      },
+
+      {
+        "id": "subject",
+        "type": "form",
+        "title": "Предмет дела",
+        "fields": [
+          { "name": "case.subject", "type": "textarea", "label": "Краткое описание дела (обяз.)" }
+        ],
+        "next": "powers"
+      },
+
+      {
+        "id": "powers",
+        "type": "checkbox-group",
+        "title": "Полномочия поверенного",
+        "allow_select_all": true,
+        "options": [
+          { "value": "represent", "label": "Представлять интересы в суде" },
+          { "value": "claims", "label": "Заявлять иски / возражения" },
+          { "value": "attend", "label": "Участвовать в заседаниях" },
+          { "value": "familiarize", "label": "Знакомиться с материалами дела" },
+          { "value": "motions", "label": "Подавать ходатайства" },
+          { "value": "receive_docs", "label": "Получать документы" },
+          { "value": "settlements", "label": "Заключать мировые соглашения" },
+          { "value": "appeals", "label": "Подавать апелляции / кассации" },
+          { "value": "sign_claims", "label": "Подписывать / изменять иски" },
+          { "value": "exec_list", "label": "Получать исполнительный лист" },
+          { "value": "financial_ops", "label": "Распоряжаться денежными средствами" }
+        ],
+        "validation": { "min": 1 },
+        "next": "authorities"
+      },
+
+      {
+        "id": "authorities",
+        "type": "checkbox-group",
+        "title": "Органы взаимодействия",
+        "allow_select_all": true,
+        "options": [
+          { "value": "court", "label": "Суд" },
+          { "value": "enforcement", "label": "Исполнительная служба" },
+          { "value": "prosecutor", "label": "Прокуратура" },
+          { "value": "police", "label": "Полиция / МВД" },
+          { "value": "bank", "label": "Банк" },
+          { "value": "registries", "label": "Регистраторы / ЦОН" },
+          { "value": "other_state", "label": "Прочие госорганы" }
+        ],
+        "validation": { "min": 1 },
+        "next": "delegation"
+      },
+
+      {
+        "id": "delegation",
+        "type": "radio",
+        "label": "Право передоверия",
+        "options": [
+          { "value": "yes", "label": "Да" },
+          { "value": "no", "label": "Нет" }
+        ],
+        "next": "term_choice"
+      },
+
+      {
+        "id": "term_choice",
+        "type": "radio",
+        "label": "Срок доверенности",
+        "options": [
+          { "value": "days", "label": "Дни (1–31)" },
+          { "value": "months", "label": "Месяцы (1–36)" }
+        ],
+        "next": {
+          "days": "term_days",
+          "months": "term_months"
+        }
+      },
+
+      {
+        "id": "term_days",
+        "type": "form",
+        "fields": [
+          { "name": "term.days", "type": "number", "label": "Количество дней", "min": 1, "max": 31 }
+        ],
+        "next": "appearance"
+      },
+
+      {
+        "id": "term_months",
+        "type": "form",
+        "fields": [
+          { "name": "term.months", "type": "number", "label": "Количество месяцев", "min": 1, "max": 36 }
+        ],
+        "next": "appearance"
+      },
+
+      {
+        "id": "appearance",
+        "type": "radio",
+        "label": "Обратившийся действует",
+        "options": [
+          { "value": "personal", "label": "Лично" },
+          { "value": "poa", "label": "По доверенности" }
+        ],
+        "next": {
+          "personal": "validation",
+          "poa": "poa_details"
+        }
+      },
+
+      {
+        "id": "poa_details",
+        "type": "form",
+        "title": "Реквизиты исходной доверенности",
+        "fields": [
+          { "name": "source_poa.reg_num", "type": "text", "label": "Реестровый номер" },
+          { "name": "source_poa.notary", "type": "text", "label": "Кем выдана" },
+          { "name": "source_poa.issue_date", "type": "date", "label": "Дата выдачи" },
+          { "name": "source_poa.license_number", "type": "text", "label": "Номер лицензии нотариуса" },
+          { "name": "source_poa.license_date", "type": "date", "label": "Дата выдачи лицензии" },
+          { "name": "source_poa.license_issuer", "type": "text", "label": "Кем выдана лицензия" }
+        ],
+        "next": "validation"
+      },
+
+      {
+        "id": "validation",
+        "type": "validation",
+        "rules": [
+          "required: principal",
+          "required: agent >= 1",
+          "required: court_type >= 1",
+          "required: case_type >= 1",
+          "required: case.subject",
+          "required: powers >= 1",
+          "required: authorities >= 1",
+          "term: valid",
+          "if appearance == poa: required source_poa"
+        ],
+        "next": "generate"
+      },
+
+      {
+        "id": "generate",
+        "type": "final",
+        "output": "docx"
+      }
+    ],
+
+    "placeholders": [
+      "principal.full_name",
+      "agent[].full_name",
+      "court_type[]",
+      "case_type[]",
+      "case.subject",
+      "powers[]",
+      "authorities[]",
+      "term.days",
+      "term.months",
+      "source_poa.reg_num"
+    ]
+  }
+}
+
+

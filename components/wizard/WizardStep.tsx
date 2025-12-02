@@ -5,6 +5,7 @@ import { WizardStep as WizardStepType } from "@/lib/types/wizard.types"
 import { FieldRenderer } from "@/components/forms/FieldRenderer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { RHFError } from "@/lib/types/form.types"
+import { WizardValidationErrors } from "./WizardValidationErrors"
 
 interface WizardStepProps {
   step: WizardStepType
@@ -22,6 +23,7 @@ export function WizardStep({ step }: WizardStepProps) {
         )}
       </CardHeader>
       <CardContent className="space-y-6">
+        <WizardValidationErrors step={step} />
         {step.fields.map((field) => {
           const fieldError: RHFError = errors[field.name]
           return (

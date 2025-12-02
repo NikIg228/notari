@@ -36,22 +36,39 @@ export function CheckboxGroup({
 
   const handleCheckboxChange = (value: string, checked: boolean) => {
     const current = selectedValues as string[]
-    if (checked) {
-      setValue(name, [...current, value])
+    if (value === "all") {
+      // Если выбрали "all", выбираем все остальные опции
+      if (checked) {
+        const optionsWithoutAll = options.filter((opt) => opt.value !== "all")
+        setValue(name, optionsWithoutAll.map((opt) => opt.value))
+      } else {
+        // Если сняли "all", снимаем все
+        setValue(name, [])
+      }
     } else {
-      setValue(name, current.filter((v) => v !== value))
+      // Обычная логика для других опций
+      if (checked) {
+        setValue(name, [...current, value])
+      } else {
+        setValue(name, current.filter((v) => v !== value))
+      }
     }
   }
 
   const handleSelectAll = (checked: boolean) => {
     if (checked) {
-      setValue(name, options.map((opt) => opt.value))
+      // Если есть опция "all", выбираем все кроме неё, иначе выбираем все
+      const optionsToSelect = options.filter((opt) => opt.value !== "all")
+      setValue(name, optionsToSelect.map((opt) => opt.value))
     } else {
       setValue(name, [])
     }
   }
 
-  const allSelected = selectedValues.length === options.length
+  // Проверяем, выбраны ли все опции (кроме "all")
+  const optionsWithoutAll = options.filter((opt) => opt.value !== "all")
+  const allSelected = optionsWithoutAll.length > 0 && 
+    optionsWithoutAll.every((opt) => (selectedValues as string[]).includes(opt.value))
 
   return (
     <div className="space-y-3">
@@ -67,6 +84,18 @@ export function CheckboxGroup({
             onCheckedChange={handleSelectAll}
           />
           <Label htmlFor={`${name}-all`} className="font-normal cursor-pointer">
+            Выбрать всё
+          </Label>
+        </div>
+      )}
+      {options.some((opt) => opt.value === "all") && (
+        <div className="flex items-center space-x-2 pb-2 border-b">
+          <Checkbox
+            id={`${name}-all-option`}
+            checked={allSelected}
+            onCheckedChange={handleSelectAll}
+          />
+          <Label htmlFor={`${name}-all-option`} className="font-normal cursor-pointer">
             Выбрать всё
           </Label>
         </div>
